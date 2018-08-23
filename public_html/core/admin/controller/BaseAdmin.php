@@ -21,32 +21,12 @@ class BaseAdmin extends \core\base\controller\BaseController{
     protected $edit;
     protected $fileArray;
 
-    protected $leftMenu = [
-        'pages' => ['name' => 'Страницы', 'img' => 'pages.png']
-    ];
+    protected $leftMenu;
+    protected $translate;
+    protected $templateArr;
+    protected $blockNeedle;
 
-    protected $translate = [
-        'price' => ['Цена'],
-        'keywords' => ['Ключевые слова', 'Максимум 70 символов'],
-        'description' => ['Метаописание', 'Максимум 160 символов'],
-        'content' => ['Описание'],
-        'short_content' => ['Краткое описание'],
-        'visible' => ['Показать на сайте']
-    ];
-
-    protected $templateArr = [
-        'text' => ['name', 'price'],
-        'textarea' => ['keywords', 'description', 'content', 'short_content'],
-        'radio' => ['visible'],
-        'img' => ['img'],
-        'gallery_img' => ['gallery_img']
-    ];
-
-    protected $blockNeedle = [
-        'vg-first' => [],
-        'vg-second' => ['img', 'gallery_img'],
-        'vg-third' => ['content', 'short_content']
-    ];
+    protected $Settings;
 
 
     protected function inputData(){
@@ -58,7 +38,14 @@ class BaseAdmin extends \core\base\controller\BaseController{
             }
         }
 
-        $this->title = 'VG engine - ';
+        $this->Settings = new \core\base\controller\Settings();
+
+        $this->leftMenu = $this->Settings->getLeftMenu();
+        $this->translate = $this->Settings->getTranslate();
+        $this->templateArr = $this->Settings->getTemplateArr();
+        $this->blockNeedle = $this->Settings->getBlockNeedle();
+
+        $this->title = 'VG engine';
         
         foreach($this->styles_admin as $style){
             $this->style[] = PATH.ADMIN_TEMPLATE.$style;
@@ -85,6 +72,7 @@ class BaseAdmin extends \core\base\controller\BaseController{
     }
 
     protected function outputData(){
+
         unset($_SESSION['crop_image']);
 
         $header = $this->render(ADMIN_TEMPLATE.'include/header', array(
@@ -142,6 +130,8 @@ class BaseAdmin extends \core\base\controller\BaseController{
     }
 
     protected function clearPostFields($arr, $unset = false){
+        $validate = $this->Settings->getValidation();
+
         foreach($arr as $key => $value){
             if(is_array($value)){
                 $this->clearPostFields($value);
@@ -157,27 +147,21 @@ class BaseAdmin extends \core\base\controller\BaseController{
                         continue;
                     }
                 }
-                switch ($key){
-                    case '0':
-                        continue;
-                        break;
-                    case 'name':
-                        $this->emptyFields($value, 'Не заполнено название');
-                        break;
-                    case 'keywords':
-                        $this->countChar($value, 70, 'Длина поля keywords не должна превышать 70 символов');
-                        break;
 
-                    case 'description':
-                        $this->emptyFields($value, 'Не заполнено метаописание');
-                        $this->countChar($value, 160, 'Длина поля description не должна превышать 160 символов');
-                        break;
-                    case 'content':
-                        $this->emptyFields($value, 'Не заполнено описание');
-                        break;
-                    default:
-                        continue;
-                        break;
+                if(array_key_exists($key, $validate)){
+                    if($this->translate[$key]){
+                        $answer = $this->translate[$key][0];
+                    }else{
+                        $answer = $key;
+                    }
+
+                    if($validate[$key]['empty']){
+                        $this->emptyFields($value, 'Не заполнено '.$answer);
+                    }
+
+                    if($validate[$key]['count']){
+                        $this->countChar($value,  $validate[$key]['count'],'лина поля ' . $answer . ' превышает ' . $validate[$key]['count'] . 'символов');
+                    }
                 }
             }
         }
@@ -186,10 +170,13 @@ class BaseAdmin extends \core\base\controller\BaseController{
 
     protected function yaTranslate($string, $uppercase = false){
         if( $curl = curl_init() ) {
-            $url = 'https://translate.yandex.net/api/v1.5/tr/translate';
-            $apiKey = 'key=trnsl.1.1.20180821T133645Z.4f02615523209aec.3439cd97dcbfd60dff85a9f4dfdcf5059b501011';
+            $yandexParameters = $this->Settings->getYandexTranslateParameters();
+
+            $url = $yandexParameters['url'];
+            $apiKey = $yandexParameters['key'];
             $text = 'text='.$string;
             $lang = 'lang=en-ru';
+
             $url_str = $url . '?' . $apiKey . '&' . $text. '&' . $lang;
 
             curl_setopt($curl, CURLOPT_URL, $url_str);

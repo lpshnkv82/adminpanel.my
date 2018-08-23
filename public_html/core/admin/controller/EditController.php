@@ -28,16 +28,53 @@ class EditController extends BaseAdmin{
 
         if($id){
             if($res){
+
+                $id_row = false;
+
                 foreach($res as $col){
-                    $this->columns[] = $col['Field'];
+                    $insert = false;
+                    $default = false;
+                    foreach($this->blockNeedle as $key => $item){
+                        if(empty($item)){
+                            $default = $key;
+                            continue;
+                        }
+                        if(in_array($col['Field'], $item)){
+                            $this->columns[$key][] = $col['Field'];
+                            $insert = true;
+                            break;
+                        }
+                    }
+                    if(!$insert){
+                        if($default){
+                            $this->columns[$default][] = $col['Field'];
+                        }else{
+                            $this->columns['default'][] = $col['Field'];
+                        }
+                    }
+
+                    if(!array_key_exists($col['Field'], $this->translate)){
+                        $this->translate[$col['Field']][0] = $col['Field'];
+                        //$this->translate[$col['Field']][0] = $this->yaTranslate($col['Field'], true);
+                    }
+
+                    if($col['Key'] == 'PRI') $id_row = $col['Field'];
                 }
+                ksort($this->columns);
+                reset($this->columns);
             }
 
-            $this->pageItem = $this->object_model->get($this->table, ['where' => ['id' => $id]])[0];
+            if($id_row){
+                $this->data = $this->object_model->get($this->table, ['where' => [$id_row => $id]])[0];
+            }else{
+                $this->data = $this->object_model->get($this->table)[0];
+            }
 
-            $this->menu_pos = $this->object_model->get($this->table,
-                ['fields' => ['COUNT(*) AS count']
-                ])[0]['count'];
+            if(in_array('menu_pos', $this->columns)){
+                $this->menu_pos = $this->object_model->get($this->table,
+                        ['fields' => ['COUNT(*) AS count']
+                        ])[0]['count'];
+            }
 
         }else{
             $this->redirect(PATH.ADMIN_PATH . '/'. $this->table);
@@ -47,12 +84,13 @@ class EditController extends BaseAdmin{
 
     protected function outputData(){
 
-        $this->content = $this->render(ADMIN_TEMPLATE.'editpage', array(
-                                            'page' => $this->pageItem,
+        $this->content = $this->render(ADMIN_TEMPLATE.'addpage_new', array(
+                                            'data' => $this->data,
                                             'table' => $this->table,
-                                            'main_pages' => $this->main_pages,
-                                            'menu_pos' => $this->menu_pos,
-                                            'columns' => $this->columns
+                                            'columns' => $this->columns,
+                                            'templateArr' => $this->templateArr,
+                                            'translate' => $this->translate,
+                                            'menu_pos' => $this->menu_pos
                                         ));
 
         $this->page = parent::outputData();
