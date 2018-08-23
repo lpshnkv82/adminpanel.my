@@ -18,6 +18,10 @@ body
     background-color: $color3
     font-family: Helvetica, sans-serif
     color: $color1
+    min-height: 100%
+
+.vg-carcass
+    min-height: 100vh
 
 .vg-main
     display: flex
@@ -226,6 +230,13 @@ label.vg-element
 
 .vg-relative
     position: relative
+
+.vg-main.vg-right
+    .vg-ninteen-of-twenty
+        max-height: min-content
+
+.vg-main.vg-right.vg-relative
+    min-height: 92vh
 
 .vg-menu
     position: absolute
