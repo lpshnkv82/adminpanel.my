@@ -172,7 +172,10 @@ class BaseAdmin extends \core\base\controller\BaseController{
 
     protected function createOutputData($res, $return = false){
 
-        $id_row = false;
+        $res_arr = [
+            'id_row' => false,
+            'menu_pos' => false
+        ];
 
         foreach($res as $col){
             $insert = false;
@@ -201,12 +204,13 @@ class BaseAdmin extends \core\base\controller\BaseController{
                 //$this->translate[$col['Field']][0] = $this->yaTranslate($col['Field'], true);
             }
 
-            if($col['Key'] == 'PRI') $id_row = $col['Field'];
+            if($col['Key'] == 'PRI') $res_arr['id_row'] = $col['Field'];
+            if($col['Field'] == 'menu_pos') $res_arr['menu_pos'] = true;
         }
         ksort($this->columns);
         reset($this->columns);
 
-        return $id_row;
+        return $res_arr;
     }
 
     protected function yaTranslate($string, $uppercase = false){

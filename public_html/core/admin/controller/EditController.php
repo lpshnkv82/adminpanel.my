@@ -32,7 +32,8 @@ class EditController extends BaseAdmin{
 
         if($id){
             if($res){
-                $this->id_row = $this->createOutputData($res);
+                $res_arr = $this->createOutputData($res);
+                $this->id_row = $res_arr['id_row'];
             }
 
             if($this->id_row){
@@ -41,7 +42,7 @@ class EditController extends BaseAdmin{
                 $this->data = $this->object_model->get($this->table)[0];
             }
 
-            if(in_array('menu_pos', $this->columns)){
+            if($res_arr['menu_pos']){
                 $this->menu_pos = $this->object_model->get($this->table,
                         ['fields' => ['COUNT(*) AS count']
                         ])[0]['count'];
@@ -76,6 +77,7 @@ class EditController extends BaseAdmin{
 
             $id = $_POST[$this->id_row];
             $table = $_POST['table'];
+
             unset($_POST['table']);
             unset($_POST[$this->id_row]);
 
@@ -97,6 +99,7 @@ class EditController extends BaseAdmin{
                     'fields' => ['img', 'thumbnails'],
                     'where' => [$this->id_row => $id]
                 ])[0];
+
                 if($images){
                     foreach($images as $image){
                         @unlink($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$image);
