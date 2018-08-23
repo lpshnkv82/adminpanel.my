@@ -19,9 +19,9 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
-    gulp.watch('public_html//sass/**/*.sass', ['sass']); // Наблюдение за sass файлами в папке sass
-    gulp.watch('public_html//*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта
-    gulp.watch('public_html//js/**/*.js', browserSync.reload); // Наблюдение за JS файлами в папке js
+    gulp.watch('public_html/app/sass/**/*.sass', ['sass']); // Наблюдение за sass файлами в папке sass
+    gulp.watch('public_html/app/*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта
+    gulp.watch('public_html/app/js/**/*.js', browserSync.reload); // Наблюдение за JS файлами в папке js
 });
 
 gulp.task('default', ['watch']);
