@@ -389,7 +389,7 @@ textarea {
 
 .img_show {
     display: block;
-    max-height: 300px;
+    width: 100%;
 }
 
 .mce-tinymce.mce-container.mce-panel {
