@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta type="keywords" content="...">
+    <meta type="description" content="...">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
+
+    <!-- Подключаем CSS -->
+</head>
+
+<body>
+    <div class="vg-carcass vg-hide">
+        <div class="vg-main">
+            <div class="vg-one-of-twenty vg-firm-background-color2  vg-center">
+                <a href="/" target="_blank">
+                    <div class="vg-element vg-full">
+                        <span class="vg-text2 vg-firm-color1">САЙТ</span>
+                    </div>
+                </a>
+            </div>
+            <div class="vg-element vg-ninteen-of-twenty vg-firm-background-color4 vg-space-between  vg-box-shadow">
+                <div class="vg-element vg-fifth">
+                    <div class="vg-element vg-half vg-center" id="hideButton">
+                        <div>
+                            <img src="./img/menu-button.png" alt="">
+                        </div>
+                    </div>
+                    <div class="vg-element vg-half vg-center vg-search" id="searchButton">
+                        <div>
+                            <img src="./img/search.png" alt="">
+                        </div>
+                        <input type="text" class="vg-input vg-text">
+                    </div>
+                </div>
+                <div class="vg-element vg-fifth">
+                    <div class="vg-element vg-half vg-right">
+                        <div class="vg-element vg-text vg-center">
+                            <span class="vg-firm-color5">admin</span>
+                        </div>
+                    </div>
+                    <a href="/login/logout/1" class="vg-element vg-half vg-center">
+                        <div>
+                            <img src="./img/out.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="vg-main vg-right vg-relative">
+            <div class="vg-wrap vg-firm-background-color1 vg-center vg-block vg-menu">
+                <a href="/admin/show/pages" class="vg-wrap vg-element vg-full vg-center active">
+                    <div class="vg-element vg-half  vg-center">
+                        <div>
+                            <img src="./img/pages.png" alt="pages">
+                        </div>
+                    </div>
+                    <div class="vg-element vg-half vg-center vg_hidden">
+                        <span class="vg-text vg-firm-color5">Страницы</span>
+                    </div>
+                </a>
+                <a href="/admin/show/portfolio" class="vg-wrap vg-element vg-full vg-center ">
+                    <div class="vg-element vg-half  vg-center">
+                        <div>
+                            <img src="./img/pages.png" alt="pages">
+                        </div>
+                    </div>
+                    <div class="vg-element vg-half vg-center vg_hidden">
+                        <span class="vg-text vg-firm-color5">portfolio</span>
+                    </div>
+                </a>
+                <a href="/admin/show/project" class="vg-wrap vg-element vg-full vg-center ">
+                    <div class="vg-element vg-half  vg-center">
+                        <div>
+                            <img src="./img/pages.png" alt="pages">
+                        </div>
+                    </div>
+                    <div class="vg-element vg-half vg-center vg_hidden">
+                        <span class="vg-text vg-firm-color5">project</span>
+                    </div>
+                </a>
+            </div>
+
+            <form class="vg-wrap vg-element vg-ninteen-of-twenty" method="post" action="/admin/add" enctype="multipart/form-data">
+                <div class="vg-wrap vg-element vg-full">
+                    <div class="vg-wrap vg-element vg-full vg-center vg-firm-background-color4 vg-box-shadow">
+                        <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
+                    </div>
+                </div>
+                <div class="vg-wrap vg-element vg-half input_container">
+                    <input type="hidden" name="table" value="pages">
+                    <div class="vg-element vg-full">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-element vg-full">
+                                <div class="vg-element vg-half vg-left">
+                                    <span class="vg-header">name</span>
+                                </div>
+                            </div>
+                            <div class="vg-element vg-full  vg-no-space-top">
+                                <div class="vg-element vg-half vg-left  vg-no-space-top">
+                                    <input type="text" name="name" class="vg-input vg-text vg-firm-color1" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vg-element vg-full">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-element vg-full">
+                                <div class="vg-element vg-half vg-left">
+                                    <span class="vg-header">Цена</span>
+                                </div>
+                            </div>
+                            <div class="vg-element vg-full  vg-no-space-top">
+                                <div class="vg-element vg-half vg-left  vg-no-space-top">
+                                    <input type="text" name="price" class="vg-input vg-text vg-firm-color1" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vg-wrap vg-element vg-full">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-element vg-full">
+                                <div class="vg-element vg-half vg-left">
+                                    <span class="vg-header">Ключевые слова</span>
+                                </div>
+                            </div>
+                            <div class="vg-element vg-full vg-no-space-top">
+                                <div class="vg-element vg-half vg-left  vg-no-space-top">
+                                    <textarea name="keywords" class="vg-input vg-text vg-full vg-firm-color1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vg-wrap vg-element vg-full">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-element vg-full">
+                                <div class="vg-element vg-half vg-left">
+                                    <span class="vg-header">Метаописание</span>
+                                </div>
+                            </div>
+                            <div class="vg-element vg-full vg-no-space-top">
+                                <div class="vg-element vg-half vg-left  vg-no-space-top">
+                                    <textarea name="description" class="vg-input vg-text vg-full vg-firm-color1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vg-wrap vg-element vg-full">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-element vg-full vg-left">
+                                <span class="vg-header">Краткое описание</span>
+                            </div>
+                            <div class="vg-element vg-full  vg-no-space-top">
+                                <div class="vg-element vg-half vg-center  vg-no-space-top">
+                                    <input class="vg-input vg-text vg-firm-color1" value="Ключи">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vg-element vg-full">
+                        <div class="vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-wrap vg-element vg-half vg-left">
+                                <div class="vg-element vg-full vg-left">
+                                    <span class="vg-header">Показать</span>
+                                </div>
+                                <div class="vg-wrap vg-element vg-fourth">
+                                    <label class="vg-element vg-full vg-center vg-left" for="no">
+                                        <span class="vg-text vg-half">Нет</span>
+                                        <input id="no" type="radio" name="display" class="vg-input vg-half" value="0">
+                                    </label>
+                                    <label class="vg-element vg-full vg-center vg-left vg-space-between" for="yes">
+                                        <span class="vg-text vg-half">Да</span>
+                                        <input id="yes" type="radio" name="display" class="vg-input vg-half" value="0">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" vg-element vg-half img_container vg-firm-background-color4 vg-box-shadow vg-block">
+                        <div class="vg-element vg-full">
+                            <div class="vg-wrap vg-element vg-full">
+                                <div class="vg-element vg-full">
+                                    <div class="vg-element vg-half vg-left">
+                                        <span class="vg-header">img</span>
+                                    </div>
+                                </div>
+                                <div class="vg-wrap vg-element vg-full">
+                                    <label class="vg-wrap vg-full file_upload vg-relative vg-left">
+                                        <span class="vg-element vg-input vg-button vg-text">Выбрать</span>
+                                        <input type="file" name="img" class="single_img">
+                                    </label>
+                                </div>
+                                <div class="vg-wrap vg-element vg-half">
+                                    <div class="vg-element img_show">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vg-element vg-full">
+                            <div class="vg-wrap vg-element vg-full">
+                                <div class="vg-element vg-full">
+                                    <div class="vg-element vg-half vg-left">
+                                        <span class="vg-header">Галерея</span>
+                                    </div>
+                                </div>
+                                <div class="vg-wrap vg-element vg-full vg-space-between vg-no-space-top">
+                                    <label class="vg-dotted-square vg-center">
+                                        <img src="./img/plus.png" alt="plus">
+                                        <input style="display: none;" type="file">
+                                    </label>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                    <div class="vg-dotted-square">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="vg-element vg-full text_container">
+                    <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                        <div class="vg-element vg-full">
+                            <div class="vg-wrap vg-element vg-full">
+                                <div class="vg-element vg-full vg-center">
+                                    <span class="vg-header">Текст</span>
+                                </div>
+                                <div class="vg-element vg-full vg-center vg-no-space-top">
+                                    <textarea class="vg-input vg-text vg-full vg-firm-color5">Текст</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vg-element vg-full">
+                    <div class="vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                        <div class="vg-element vg-full vg-left">
+                            <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>

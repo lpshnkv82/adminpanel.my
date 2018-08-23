@@ -1,0 +1,7 @@
+<?=$header;?>
+<?=$sideBar;?>
+<?=$content;?>
+<?=$footer;?>
+
+
+				

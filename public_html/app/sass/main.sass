@@ -1,0 +1,259 @@
+$color1: #2f3b4c
+$color2: #00bfe8
+$color3: #eceef2
+$color4: #ffffff
+$color5: #b0bec5
+$offset: 1%
+$full-size: 100%
+$wrap-size: 80% + $offset
+$half-size: $full-size / 2 - $offset
+$third-size: $full-size / 3 - $offset
+$fourth-size: $full-size / 4 - $offset
+$fifth-size: $full-size / 5 - $offset
+$sixth-size: $full-size / 6 - $offset
+$one-of-twenty-size: $full-size * 1.5 / 20 - $offset
+$ninteen-of-twenty-size: $full-size * 18.5 / 20 - $offset
+body
+    margin: 0
+    background-color: $color3
+    font-family: Helvetica, sans-serif
+    color: $color1
+
+.vg-main
+    display: flex
+    flex-basis: $full-size
+    flex-wrap: wrap
+
+img
+    max-width: 100%
+    max-height: 100%
+
+a
+    text-decoration: none
+
+.vg-input
+    border: 1px solid $color1
+    width: $wrap-size
+    box-sizing: border-box
+    padding: $offset
+    font-size: 1.5vw
+    cursor: pointer
+    &:hover
+        color: $color1
+        background-color: $color5
+    @media (max-width: 500px)
+        &
+            font-size: 14px
+
+.file_upload
+    mark
+        min-width: max-content
+        background: none
+    input[type=file]
+        position: absolute
+        top: 0
+        opacity: 0
+        z-index: -1
+
+.vg-button
+    width: max-content
+
+.vg-wrap
+    flex-wrap: wrap
+
+.vg-element
+    display: flex
+    padding: $offset/2
+
+.vg-full
+    flex-basis: $full-size
+
+.vg-half
+    flex-basis: $half-size
+    @media (max-width: 768px)
+        &
+            flex-basis: $full-size
+
+.vg-third
+    flex-basis: $third-size
+    @media (max-width: 500px)
+        &
+            flex-basis: $full-size
+            
+.vg-fourth
+    flex-basis: $fourth-size
+    @media (max-width: 768px)
+        &
+            flex-basis: $third-size
+    @media (max-width: 500px)
+        &
+            flex-basis: $half-size
+
+.vg-fifth
+    flex-basis: $fifth-size
+    @media (max-width: 500px)
+        flex-basis: $third-size
+    
+.vg-sixth
+    flex-basis: $sixth-size
+
+.vg-one-of-twenty
+        flex-basis: $one-of-twenty-size
+
+.vg-ninteen-of-twenty
+        flex-basis: $ninteen-of-twenty-size
+
+.vg-block
+    display: block
+
+.vg-center
+    display: flex
+    justify-content: center
+    text-align: center
+    align-items: center
+
+.vg-space-around
+    justify-content: space-around
+
+.vg-space-between
+    justify-content: space-between
+
+.vg-firm-color1
+    color: $color1
+
+.vg-firm-color2
+    color: $color2
+
+.vg-firm-color3
+    color: $color3
+
+.vg-firm-color4
+    color: $color4
+
+.vg-firm-color5
+    color: $color5
+
+.vg-firm-background-color1
+    background-color: $color1
+
+.vg-firm-background-color2
+    background-color: $color2
+
+.vg-firm-background-color3
+    background-color: $color3
+
+.vg-firm-background-color4
+    background-color: $color4
+
+.vg-firm-background-color5
+    background-color: $color5
+
+.vg-header
+    font-size: 2vw
+    @media (max-width: 500px)
+        &
+            font-size: 21px
+
+.vg-subheader
+    font-size: 1vw
+    text-transform: uppercase    
+    @media (max-width: 500px)
+        &
+            font-size: 14px
+
+.vg-text
+    font-size: 1vw
+    text-decoration: none
+    @media (max-width: 768px)
+        &
+            font-size: 12px
+
+.vg-text2
+    font-size: 1vw
+
+.vg-left
+    justify-content: flex-start
+    text-align: left
+
+.vg-right
+    justify-content: flex-end
+    text-align: right
+
+.vg-block
+    display: block
+
+.vg-hide
+    .vg_hidden
+        display: none
+
+.vg-box-shadow
+    box-shadow: 0vw 2px 1px rgba($color5, .5)
+
+#hideButton, #searchButton
+    cursor: pointer
+    padding: $offset*5 0
+    &:hover
+        background-color: $color3
+
+#searchButton.vg-search-reverse
+    cursor: default
+    &:hover
+        background-color: white
+
+.vg-search
+    img
+        display: block
+    input
+        display: none
+        width: 100%
+
+.vg-search-reverse
+    img
+        display: none
+    input
+        display: block
+        width: 100%
+
+.vg-relative
+    position: relative
+
+.vg-menu
+    position: absolute
+    display: flex
+    left: 0
+    width: $third-size
+    a
+        padding: $offset*5
+        &:hover
+            background: $color1 * 0.8
+            border-left: 2px solid $color2
+        .vg-half
+            flex-basis: $half-size
+            @media (max-width: 500px)
+                flex-basis: $full-size
+.vg-hide
+    .vg-menu
+        width: $one-of-twenty-size
+        a
+            padding: $offset*20
+            @media (max-width: 768px)
+                margin: $offset*40 0
+
+/*global*/
+.vg-no-space-top
+    padding-top: 0
+textarea
+    height: 150px
+
+.vg-full
+    &>textarea
+        height: 300px
+
+.vg-dotted-square
+    border: 2px dotted $color1
+    margin: $offset
+    height: 5vw
+    width: 5vw
+    @media (max-width: 768px)
+        height: 10vw
+        width: 10vw
