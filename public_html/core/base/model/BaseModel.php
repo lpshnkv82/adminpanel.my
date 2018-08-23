@@ -138,7 +138,9 @@ abstract class BaseModel{
         $set['all_rows'] = $set['all_rows'] ? $set['all_rows'] : false;
 
         if(!$set['all_rows']){
-            if(!$set['fields']){
+            if($set['where']){
+                $where = $this->createWhere($set);
+            }elseif(!$set['fields']){
                 if(isset($_POST['id'])){
                     $id = $_POST['id'];
                     $where = 'WHERE id = '.$id;
@@ -149,14 +151,10 @@ abstract class BaseModel{
                     unset($_POST['user_id']);
                 }
             }else{
-                if(!$set['where']){
-                    foreach($set['fields'] as $key => $value){
-                        $where = 'WHERE '.$key.'='.$value;
-                        unset($set['fields'][$key]);
-                        break;
-                    }
-                }else{
-                    $where = $this->createWhere($set);
+                foreach($set['fields'] as $key => $value){
+                    $where = 'WHERE '.$key.'='.$value;
+                    unset($set['fields'][$key]);
+                    break;
                 }
             }
         }

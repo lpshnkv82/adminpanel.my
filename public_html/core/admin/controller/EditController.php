@@ -3,11 +3,7 @@ namespace core\admin\controller;
 
 class EditController extends BaseAdmin{
 
-    protected $fileArray = [];
-    protected $pageItem = [];
-    protected $main_pages = [];
-    protected $menu_pos;
-    protected $columns;
+    protected $id_row;
 
     protected function inputData($parameters){
 
@@ -16,9 +12,17 @@ class EditController extends BaseAdmin{
         if($this->isPost()){
             $this->clearPostFields($_POST);
 
-            $this->object_model->updateMenuPosition($_POST['table'], 'menu_pos', ['id' => $_POST['id']], $_POST['menu_pos']);
+            $this->id_row = array_keys($_POST)[0];
+
+            if(array_key_exists('menu_pos', $_POST)){
+                $this->object_model->updateMenuPosition($_POST['table'], 'menu_pos', [$this->id_row => $_POST[$this->id_row]], $_POST['menu_pos']);
+            }
 
             $this->editData();
+        }
+
+        if(empty($parameters)){
+            $this->redirect(PATH.ADMIN_PATH);
         }
 
         $this->table = array_keys($parameters)[0];
@@ -28,44 +32,11 @@ class EditController extends BaseAdmin{
 
         if($id){
             if($res){
-
-                $id_row = false;
-
-                foreach($res as $col){
-                    $insert = false;
-                    $default = false;
-                    foreach($this->blockNeedle as $key => $item){
-                        if(empty($item)){
-                            $default = $key;
-                            continue;
-                        }
-                        if(in_array($col['Field'], $item)){
-                            $this->columns[$key][] = $col['Field'];
-                            $insert = true;
-                            break;
-                        }
-                    }
-                    if(!$insert){
-                        if($default){
-                            $this->columns[$default][] = $col['Field'];
-                        }else{
-                            $this->columns['default'][] = $col['Field'];
-                        }
-                    }
-
-                    if(!array_key_exists($col['Field'], $this->translate)){
-                        $this->translate[$col['Field']][0] = $col['Field'];
-                        //$this->translate[$col['Field']][0] = $this->yaTranslate($col['Field'], true);
-                    }
-
-                    if($col['Key'] == 'PRI') $id_row = $col['Field'];
-                }
-                ksort($this->columns);
-                reset($this->columns);
+                $this->id_row = $this->createOutputData($res);
             }
 
-            if($id_row){
-                $this->data = $this->object_model->get($this->table, ['where' => [$id_row => $id]])[0];
+            if($this->id_row){
+                $this->data = $this->object_model->get($this->table, ['where' => [$this->id_row => $id]])[0];
             }else{
                 $this->data = $this->object_model->get($this->table)[0];
             }
@@ -84,13 +55,14 @@ class EditController extends BaseAdmin{
 
     protected function outputData(){
 
-        $this->content = $this->render(ADMIN_TEMPLATE.'addpage_new', array(
+        $this->content = $this->render(ADMIN_TEMPLATE.'editpage_new', array(
                                             'data' => $this->data,
                                             'table' => $this->table,
                                             'columns' => $this->columns,
                                             'templateArr' => $this->templateArr,
                                             'translate' => $this->translate,
-                                            'menu_pos' => $this->menu_pos
+                                            'menu_pos' => $this->menu_pos,
+                                            'id_row' => $this->id_row
                                         ));
 
         $this->page = parent::outputData();
@@ -100,10 +72,12 @@ class EditController extends BaseAdmin{
 
     private function editData(){
 
-        if($_POST['id']){
+        if($_POST[$this->id_row]){
 
+            $id = $_POST[$this->id_row];
             $table = $_POST['table'];
             unset($_POST['table']);
+            unset($_POST[$this->id_row]);
 
             $fileEdit = new \libraries\FileEdit();
             $this->fileArray = $fileEdit->addFile();
@@ -112,7 +86,7 @@ class EditController extends BaseAdmin{
 //                foreach ($this->fileArray['gallery_img'] as $item) {
 //                    $fileEdit->createThumbnail($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$item, array('cut' => '1230|750'));
 //                }
-                $gallery = $this->object_model->get($table, ['fields' => ['gallery_img'], 'where' => ['id' => $_POST['id']]])[0]['gallery_img'];
+                $gallery = $this->object_model->get($table, ['fields' => ['gallery_img'], 'where' => [$this->id_row => $id]])[0]['gallery_img'];
                 if($gallery){
                     $this->fileArray{'gallery_img'}[] = $gallery;
                 }
@@ -121,7 +95,7 @@ class EditController extends BaseAdmin{
             if($this->fileArray['img']){
                 $images = $this->object_model->get($table, [
                     'fields' => ['img', 'thumbnails'],
-                    'where' => ['id' => $_POST['id']]
+                    'where' => [$this->id_row => $id]
                 ])[0];
                 if($images){
                     foreach($images as $image){
@@ -130,7 +104,7 @@ class EditController extends BaseAdmin{
                 }
             }
 
-            $res = $this->object_model->edit($table, ['files' => $this->fileArray]);
+            $res = $this->object_model->edit($table, ['files' => $this->fileArray, 'where' => [$this->id_row => $id]]);
             if($res){
                 $_SESSION['res']['answer'] = '<div class="success">Данные изменены</div>';
             }

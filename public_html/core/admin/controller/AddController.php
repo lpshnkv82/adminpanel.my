@@ -3,13 +3,6 @@ namespace core\admin\controller;
 
 class AddController extends BaseAdmin{
 
-    protected $columns;
-    protected $menu_pos;
-    protected $dopRows;
-    protected $fileArray;
-    protected $main_pages;
-
-
     protected function inputData($parameters){
 
         parent::inputData();
@@ -23,35 +16,7 @@ class AddController extends BaseAdmin{
         $res = $this->object_model->showColumns($this->table);
 
         if($res){
-            foreach($res as $col){
-                $insert = false;
-                $default = false;
-                foreach($this->blockNeedle as $key => $item){
-                    if(empty($item)){
-                        $default = $key;
-                        continue;
-                    }
-                    if(in_array($col['Field'], $item)){
-                        $this->columns[$key][] = $col['Field'];
-                        $insert = true;
-                        break;
-                    }
-                }
-                if(!$insert){
-                    if($default){
-                        $this->columns[$default][] = $col['Field'];
-                    }else{
-                        $this->columns['default'][] = $col['Field'];
-                    }
-                }
-
-                if(!array_key_exists($col['Field'], $this->translate)){
-                    $this->translate[$col['Field']][0] = $col['Field'];
-                    //$this->translate[$col['Field']][0] = $this->yaTranslate($col['Field'], true);
-                }
-            }
-            ksort($this->columns);
-            reset($this->columns);
+             $this->createOutputData($res);
         }
 
         if(in_array('menu_pos', $this->columns)){
@@ -69,8 +34,7 @@ class AddController extends BaseAdmin{
                                                 'table' => $this->table,
                                                 'columns' => $this->columns,
                                                 'templateArr' => $this->templateArr,
-                                                'translate' => $this->translate,
-                                                'dop_rows' => $this->dopRows
+                                                'translate' => $this->translate
                                                 ));
 
         $this->page = parent::outputData();

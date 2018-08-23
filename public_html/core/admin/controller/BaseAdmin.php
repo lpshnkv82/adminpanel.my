@@ -18,8 +18,10 @@ class BaseAdmin extends \core\base\controller\BaseController{
     protected $tables; //генерация добавления разделов
     protected $table; // Текущая таблица
     protected $data;
-    protected $edit;
     protected $fileArray;
+    protected $columns;
+    protected $menu_pos;
+    protected $main_pages;
 
     protected $leftMenu;
     protected $translate;
@@ -166,6 +168,45 @@ class BaseAdmin extends \core\base\controller\BaseController{
             }
         }
         return true;
+    }
+
+    protected function createOutputData($res, $return = false){
+
+        $id_row = false;
+
+        foreach($res as $col){
+            $insert = false;
+            $default = false;
+            foreach($this->blockNeedle as $key => $item){
+                if(empty($item)){
+                    $default = $key;
+                    continue;
+                }
+                if(in_array($col['Field'], $item)){
+                    $this->columns[$key][] = $col['Field'];
+                    $insert = true;
+                    break;
+                }
+            }
+            if(!$insert){
+                if($default){
+                    $this->columns[$default][] = $col['Field'];
+                }else{
+                    $this->columns['default'][] = $col['Field'];
+                }
+            }
+
+            if(!array_key_exists($col['Field'], $this->translate)){
+                $this->translate[$col['Field']][0] = $col['Field'];
+                //$this->translate[$col['Field']][0] = $this->yaTranslate($col['Field'], true);
+            }
+
+            if($col['Key'] == 'PRI') $id_row = $col['Field'];
+        }
+        ksort($this->columns);
+        reset($this->columns);
+
+        return $id_row;
     }
 
     protected function yaTranslate($string, $uppercase = false){

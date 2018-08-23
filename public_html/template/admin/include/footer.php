@@ -9,7 +9,7 @@
             }
             ?>
         </div>
-            
+
         <script>
             var path = '<?=PATH?>';
             var cropes = JSON.parse('<?=json_encode(CROP)?>');
