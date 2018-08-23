@@ -3,7 +3,7 @@ $color2: #00bfe8
 $color3: #eceef2
 $color4: #ffffff
 $color5: #b0bec5
-$offset: 1%
+$offset: 0.7%
 $full-size: 100%
 $wrap-size: 80% + $offset
 $half-size: $full-size / 2 - $offset
@@ -33,7 +33,7 @@ a
 
 .vg-input
     border: 1px solid $color1
-    width: $wrap-size
+    flex-basis: 100%
     box-sizing: border-box
     padding: $offset
     font-size: 1.5vw
@@ -44,6 +44,12 @@ a
     @media (max-width: 500px)
         &
             font-size: 14px
+
+.vg-input[type="radio"] 
+    flex-basis: auto
+
+label.vg-element 
+    padding: 3.5% 0
 
 .file_upload
     mark
@@ -57,6 +63,7 @@ a
 
 .vg-button
     width: max-content
+    flex-basis: auto
 
 .vg-wrap
     flex-wrap: wrap
@@ -70,6 +77,8 @@ a
 
 .vg-half
     flex-basis: $half-size
+
+.vg-half, .vg-first, .vg-second
     @media (max-width: 768px)
         &
             flex-basis: $full-size
@@ -149,10 +158,11 @@ a
     background-color: $color5
 
 .vg-header
-    font-size: 2vw
-    @media (max-width: 500px)
+    font-size: 1.1vw
+    margin-bottom: 10px
+    @media (max-width: 768px)
         &
-            font-size: 21px
+            font-size: 14px
 
 .vg-subheader
     font-size: 1vw
@@ -219,7 +229,7 @@ a
 
 .vg-menu
     position: absolute
-    display: flex
+    height: 100%
     left: 0
     width: $third-size
     a
@@ -247,7 +257,7 @@ textarea
 
 .vg-full
     &>textarea
-        height: 300px
+        height: 200px
 
 .vg-dotted-square
     border: 2px dotted $color1
@@ -257,3 +267,23 @@ textarea
     @media (max-width: 768px)
         height: 10vw
         width: 10vw
+
+.vg-first, .vg-second
+    flex-basis: 49%
+    @media (max-width: 768px) 
+        flex-basis: auto
+
+.vg-second
+    display: block
+    background: #fff
+
+.vg-third
+    flex-basis: 98%
+
+.img_show
+    display: block
+    height: 300px
+
+.mce-tinymce.mce-container.mce-panel
+    width: 100%
+    max-width: 98vw
