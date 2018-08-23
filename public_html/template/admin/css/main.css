@@ -11,6 +11,17 @@ body {
     flex-wrap: wrap;
 }
 
+.vg-menu {
+    min-height: 92vh;
+    overflow: hidden;
+}
+
+@media (max-height: 768px) {
+    .vg-menu {
+        min-height: 87vh;
+    }
+}
+
 img {
     max-width: 100%;
     max-height: 100%;
