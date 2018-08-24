@@ -2,9 +2,13 @@
       enctype="multipart/form-data">
     <div class="vg-wrap vg-element vg-full">
         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
-            <div class="vg-element vg-half vg-left">
-                <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button"
-                       value="Сохранить">
+        <div class="vg-element vg-half vg-left">
+                <div class="vg-element">
+                    <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
+                </div>
+                <div class="vg-element">
+                    <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Удалить">
+                </div>
             </div>
         </div>
     </div>
@@ -36,9 +40,13 @@
 
     <div class="vg-wrap vg-element vg-full">
         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
-            <div class="vg-element vg-half vg-left">
-                <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button"
-                       value="Сохранить">
+        <div class="vg-element vg-half vg-left">
+                <div class="vg-element">
+                    <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
+                </div>
+                <div class="vg-element">
+                    <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Удалить">
+                </div>
             </div>
         </div>
     </div>
