@@ -84,25 +84,34 @@ class EditController extends BaseAdmin{
             $fileEdit = new \libraries\FileEdit();
             $this->fileArray = $fileEdit->addFile();
 
-            if($this->fileArray{'gallery_img'}){
-//                foreach ($this->fileArray['gallery_img'] as $item) {
-//                    $fileEdit->createThumbnail($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$item, array('cut' => '1230|750'));
-//                }
-                $gallery = $this->object_model->get($table, ['fields' => ['gallery_img'], 'where' => [$this->id_row => $id]])[0]['gallery_img'];
-                if($gallery){
-                    $this->fileArray{'gallery_img'}[] = $gallery;
-                }
-            }
+            foreach($this->blockNeedle as $index => $value){
+                if(strpos($index, 'img') !== false){
+                    foreach($value as $item){
+                        if(strpos($item, 'gallery') !== false){
+                            if($this->fileArray{$item}){
+            //                foreach ($this->fileArray['gallery_img'] as $item) {
+            //                    $fileEdit->createThumbnail($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$item, array('cut' => '1230|750'));
+            //                }
+                                $gallery = $this->object_model->get($table, ['fields' => [$item], 'where' => [$this->id_row => $id]])[0][$item];
+                                if($gallery){
+                                    $this->fileArray[$item][] = $gallery;
+                                }
+                                continue;
+                            }
+                        }else{
+                            if($this->fileArray[$item]){
+                                $images = $this->object_model->get($table, [
+                                    'fields' => [$item],
+                                    'where' => [$this->id_row => $id]
+                                ])[0];
 
-            if($this->fileArray['img']){
-                $images = $this->object_model->get($table, [
-                    'fields' => ['img', 'thumbnails'],
-                    'where' => [$this->id_row => $id]
-                ])[0];
-
-                if($images){
-                    foreach($images as $image){
-                        @unlink($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$image);
+                                if($images){
+                                    foreach($images as $image){
+                                        @unlink($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$image);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

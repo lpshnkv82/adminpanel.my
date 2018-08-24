@@ -377,8 +377,8 @@ textarea {
     }
 }
 
-.vg-first,
-.vg-second {
+.vg-rows,
+.vg-img {
     flex-basis: 49%;
 }
 
@@ -389,12 +389,12 @@ textarea {
     }
 }
 
-.vg-second {
+.vg-img {
     display: block;
     background: #fff;
 }
 
-.vg-third {
+.vg-content {
     flex-basis: 98%;
 }
 

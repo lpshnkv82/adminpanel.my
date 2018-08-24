@@ -18,7 +18,7 @@ class Settings
 
     private $translate = [
         'name' => ['Название'],
-        'img' => ['Оновное изображение'],
+        'img' => ['Основное изображение'],
         'gallery_img' => ['Галлерея изображений'],
         'price' => ['Цена'],
         'keywords' => ['Ключевые слова', 'Максимум 70 символов'],
@@ -37,9 +37,9 @@ class Settings
     ];
 
     private $blockNeedle = [
-        'vg-first' => [],
-        'vg-second' => ['img', 'gallery_img'],
-        'vg-third' => ['content', 'short_content']
+        'vg-rows' => [],
+        'vg-img' => ['img', 'gallery_img'],
+        'vg-content' => ['content', 'short_content']
     ];
 
     private $validation = [

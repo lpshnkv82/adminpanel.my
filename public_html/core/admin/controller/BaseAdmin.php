@@ -176,7 +176,7 @@ class BaseAdmin extends \core\base\controller\BaseController{
             'id_row' => false,
             'menu_pos' => false
         ];
-
+        $temp_arr = [];
         foreach($res as $col){
             $insert = false;
             $default = false;
@@ -186,16 +186,16 @@ class BaseAdmin extends \core\base\controller\BaseController{
                     continue;
                 }
                 if(in_array($col['Field'], $item)){
-                    $this->columns[$key][] = $col['Field'];
+                    $temp_arr[$key][] = $col['Field'];
                     $insert = true;
                     break;
                 }
             }
             if(!$insert){
                 if($default){
-                    $this->columns[$default][] = $col['Field'];
+                    $temp_arr[$default][] = $col['Field'];
                 }else{
-                    $this->columns['default'][] = $col['Field'];
+                    $temp_arr['default'][] = $col['Field'];
                 }
             }
 
@@ -207,8 +207,15 @@ class BaseAdmin extends \core\base\controller\BaseController{
             if($col['Key'] == 'PRI') $res_arr['id_row'] = $col['Field'];
             if($col['Field'] == 'menu_pos') $res_arr['menu_pos'] = true;
         }
-        ksort($this->columns);
-        reset($this->columns);
+
+        foreach ($this->blockNeedle as $index => $item) {
+            $this->columns[$index] = $temp_arr[$index];
+            unset($temp_arr[$index]);
+        }
+
+        if($temp_arr['default']){
+            $this->columns['default'] = $temp_arr['default'];
+        }
 
         return $res_arr;
     }
