@@ -21,16 +21,19 @@
             echo '<div class="vg-firm-background-color4 vg-box-shadow">';
         }
 
-        foreach ($block as $row) {
-            foreach ($templateArr as $type => $items) {
-                if (in_array($row, $items)) {
-                    if (!@include PATH . ADMIN_TEMPLATE . '/include/form_templates/' . $type . '.php') {
-                        throw new \core\base\controller\ContrException('Не найден шаблон ' . PATH . ADMIN_TEMPLATE . '/include/form_templates/' . $type . '.php');
+        if($block){
+            foreach ($block as $row) {
+                foreach ($templateArr as $type => $items) {
+                    if (in_array($row, $items)) {
+                        if (!@include PATH . ADMIN_TEMPLATE . '/include/form_templates/' . $type . '.php') {
+                            throw new \core\base\controller\ContrException('Не найден шаблон ' . PATH . ADMIN_TEMPLATE . '/include/form_templates/' . $type . '.php');
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         }
+
         echo '</div>';
         if($class == 'vg-img') {
             echo '</div>';
