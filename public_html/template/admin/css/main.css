@@ -13,7 +13,6 @@ body {
 
 .vg-menu {
     min-height: 92vh;
-    overflow: hidden;
 }
 
 @media (max-height: 768px) {
@@ -312,11 +311,22 @@ label.vg-element {
     position: absolute;
     height: 100%;
     left: 0;
-    width: 32.63333%;
+    width: 6.8%;
 }
 
 .vg-menu a {
     padding: 3.5%;
+    background: #2f3b4c;
+    width: 25vw;
+    padding: 1vw 0;
+    border-right: 1px solid rgba(24, 30, 38, 0.1);
+    border-bottom: 1px solid #2d3848;
+}
+
+@media (max-width: 500px) {
+    .vg-menu a {
+        width: 20vw;
+    }
 }
 
 .vg-menu a:hover {
@@ -334,11 +344,8 @@ label.vg-element {
     }
 }
 
-.vg-hide .vg-menu {
-    width: 6.8%;
-}
-
 .vg-hide .vg-menu a {
+    width: auto;
     padding: 14%;
 }
 

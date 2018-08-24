@@ -26,7 +26,6 @@ body
 
 .vg-menu
     min-height: 92vh
-    overflow: hidden
     @media(max-height: 768px)
         min-height: 87vh
 
@@ -237,9 +236,16 @@ label.vg-element
     position: absolute
     height: 100%
     left: 0
-    width: $third-size
+    width: $one-of-twenty-size
     a
         padding: $offset*5
+        background: $color1
+        width: 25vw
+        padding: 1vw 0
+        border-right: 1px solid rgba($color1*.5, .1)
+        border-bottom: 1px solid $color1*.95
+        @media (max-width: 500px)
+            width: 20vw
         &:hover
             background: $color1 * 0.8
             border-left: 2px solid $color2
@@ -249,8 +255,8 @@ label.vg-element
                 flex-basis: $full-size
 .vg-hide
     .vg-menu
-        width: $one-of-twenty-size
         a
+            width: auto
             padding: $offset*20
             @media (max-width: 768px)
                 margin: $offset*40 0
