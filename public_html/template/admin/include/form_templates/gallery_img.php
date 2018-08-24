@@ -10,6 +10,7 @@
                     <img src="<?=PATH.ADMIN_TEMPLATE?>img/plus.png" alt="plus">
                     <input class="gallery_img" style="display: none;" type="file" name="<?=$row?>[]" multiple>
                 </label>
+<<<<<<< HEAD
                 <?php if($data[$row]):?>
                     <?php $data[$row] = explode("|", $data[$row]);?>
                     <?php foreach($data[$row] as $item):?>
