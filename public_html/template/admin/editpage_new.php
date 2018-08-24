@@ -20,8 +20,8 @@
     <?php
     foreach($columns as $class => $block){
         echo '<div class="vg-wrap vg-element ' . $class . '">';
-        if($class == 'vg-img') {
-            echo '<div class="vg-firm-background-color4 vg-box-shadow">';
+        if($class != 'vg-content') {
+            echo '<div class="vg-full vg-firm-background-color4 vg-box-shadow">';
         }
 
         if($block){
@@ -38,7 +38,7 @@
         }
 
         echo '</div>';
-        if($class == 'vg-img') {
+        if($class != 'vg-content') {
             echo '</div>';
         }
     }
