@@ -73,6 +73,7 @@ label.vg-element {
 .vg-button {
     width: max-content;
     flex-basis: auto;
+    padding: 7%;
 }
 
 .vg-wrap {
