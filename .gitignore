@@ -161,3 +161,8 @@ fabric.properties
 public_html/config.php
 public_html/log/log.txt
 public_html/log/log_user.txt
+
+# gulp files ignoring
+/gulpfile.js
+/package-lock.json
+/package.json

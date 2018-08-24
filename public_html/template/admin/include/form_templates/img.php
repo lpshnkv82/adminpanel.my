@@ -1,5 +1,5 @@
-<div class="vg-element vg-full">
-    <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow img_container">
+<div class="vg-element vg-full vg-box-shadow img_container">
+    <div class="vg-wrap vg-element vg-full">
         <div class="vg-element vg-full">
             <div class="vg-element vg-half vg-left">
                 <span class="vg-header"><?php echo $translate[$row][0] ? $translate[$row][0] : $row?></span>

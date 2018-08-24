@@ -13,7 +13,6 @@ body {
 
 .vg-menu {
     min-height: 92vh;
-    overflow: hidden;
 }
 
 @media (max-height: 768px) {
@@ -74,6 +73,7 @@ label.vg-element {
 .vg-button {
     width: max-content;
     flex-basis: auto;
+    padding: 7%;
 }
 
 .vg-wrap {
@@ -312,11 +312,22 @@ label.vg-element {
     position: absolute;
     height: 100%;
     left: 0;
-    width: 32.63333%;
+    width: 6.8%;
 }
 
 .vg-menu a {
     padding: 3.5%;
+    background: #2f3b4c;
+    width: 25vw;
+    padding: 1vw 0;
+    border-right: 1px solid rgba(24, 30, 38, 0.1);
+    border-bottom: 1px solid #2d3848;
+}
+
+@media (max-width: 500px) {
+    .vg-menu a {
+        width: 20vw;
+    }
 }
 
 .vg-menu a:hover {
@@ -334,11 +345,8 @@ label.vg-element {
     }
 }
 
-.vg-hide .vg-menu {
-    width: 6.8%;
-}
-
 .vg-hide .vg-menu a {
+    width: auto;
     padding: 14%;
 }
 
@@ -346,6 +354,10 @@ label.vg-element {
     .vg-hide .vg-menu a {
         margin: 28% 0;
     }
+}
+
+.active {
+    border-left: 2px solid #00bfe8;
 }
 
 
@@ -377,9 +389,15 @@ textarea {
     }
 }
 
+<<<<<<< HEAD
 .vg-rows,
 .vg-img {
     flex-basis: 49%;
+=======
+.vg-first,
+.vg-second {
+    flex-basis: 49.3%;
+>>>>>>> cbdc3859b3053ef7a477e0f88d27ef76902fe325
 }
 
 @media (max-width: 768px) {
@@ -391,11 +409,19 @@ textarea {
 
 .vg-img {
     display: block;
-    background: #fff;
 }
 
+.vg-second>div {
+    height: 100%;
+}
+
+<<<<<<< HEAD
 .vg-content {
     flex-basis: 98%;
+=======
+.vg-third {
+    flex-basis: 100%;
+>>>>>>> cbdc3859b3053ef7a477e0f88d27ef76902fe325
 }
 
 .img_show {
@@ -406,4 +432,8 @@ textarea {
 .mce-tinymce.mce-container.mce-panel {
     width: 100%;
     max-width: 98vw;
+}
+
+.vg-no-padding-right {
+    padding-right: 0;
 }

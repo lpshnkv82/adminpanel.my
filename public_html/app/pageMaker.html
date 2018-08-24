@@ -2,16 +2,15 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta type="keywords" content="...">
     <meta type="description" content="...">
     <title>Document</title>
-    <link rel="stylesheet" href="css/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="./js/script.js"></script>
 
-    <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="/template/admin/css/main.css">
+    <link rel="stylesheet" href="/template/admin/css/jquery.Jcrop.min.css">
+    <link rel="stylesheet" href="http://adminpanel.my/template/admin/js/tinymce/skins/lightgray/skin.min.css">
 </head>
 
 <body>
@@ -28,12 +27,12 @@
                 <div class="vg-element vg-fifth">
                     <div class="vg-element vg-half vg-center" id="hideButton">
                         <div>
-                            <img src="./img/menu-button.png" alt="">
+                            <img src="/template/admin/img/menu-button.png" alt="">
                         </div>
                     </div>
                     <div class="vg-element vg-half vg-center vg-search" id="searchButton">
                         <div>
-                            <img src="./img/search.png" alt="">
+                            <img src="/template/admin/img/search.png" alt="">
                         </div>
                         <input type="text" class="vg-input vg-text">
                     </div>
@@ -46,7 +45,7 @@
                     </div>
                     <a href="/login/logout/1" class="vg-element vg-half vg-center">
                         <div>
-                            <img src="./img/out.png" alt="">
+                            <img src="/template/admin/img/out.png" alt="">
                         </div>
                     </a>
                 </div>
@@ -57,7 +56,7 @@
                 <a href="/admin/show/pages" class="vg-wrap vg-element vg-full vg-center active">
                     <div class="vg-element vg-half  vg-center">
                         <div>
-                            <img src="./img/pages.png" alt="pages">
+                            <img src="/template/admin/img/pages.png" alt="pages">
                         </div>
                     </div>
                     <div class="vg-element vg-half vg-center vg_hidden">
@@ -67,7 +66,7 @@
                 <a href="/admin/show/portfolio" class="vg-wrap vg-element vg-full vg-center ">
                     <div class="vg-element vg-half  vg-center">
                         <div>
-                            <img src="./img/pages.png" alt="pages">
+                            <img src="/template/admin/img/pages.png" alt="pages">
                         </div>
                     </div>
                     <div class="vg-element vg-half vg-center vg_hidden">
@@ -77,7 +76,7 @@
                 <a href="/admin/show/project" class="vg-wrap vg-element vg-full vg-center ">
                     <div class="vg-element vg-half  vg-center">
                         <div>
-                            <img src="./img/pages.png" alt="pages">
+                            <img src="/template/admin/img/pages.png" alt="pages">
                         </div>
                     </div>
                     <div class="vg-element vg-half vg-center vg_hidden">
@@ -85,24 +84,31 @@
                     </div>
                 </a>
             </div>
-
             <form class="vg-wrap vg-element vg-ninteen-of-twenty" method="post" action="/admin/add" enctype="multipart/form-data">
                 <div class="vg-wrap vg-element vg-full">
-                    <div class="vg-wrap vg-element vg-full vg-center vg-firm-background-color4 vg-box-shadow">
-                        <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
+                    <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                        <div class="vg-element vg-half vg-left">
+                            <div class="vg-element">
+                                <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
+                            </div>
+                            <div class="vg-element">
+                                <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Удалить">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="vg-wrap vg-element vg-half input_container">
-                    <input type="hidden" name="table" value="pages">
+                <input type="hidden" name="table" value="pages">
+
+                <div class="vg-wrap vg-element vg-first">
                     <div class="vg-element vg-full">
                         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
                             <div class="vg-element vg-full">
-                                <div class="vg-element vg-half vg-left">
+                                <div class="vg-element vg-full vg-left">
                                     <span class="vg-header">name</span>
                                 </div>
                             </div>
-                            <div class="vg-element vg-full  vg-no-space-top">
-                                <div class="vg-element vg-half vg-left  vg-no-space-top">
+                            <div class="vg-element vg-full vg-no-space-top">
+                                <div class="vg-element vg-full vg-left  vg-no-space-top">
                                     <input type="text" name="name" class="vg-input vg-text vg-firm-color1" value="">
                                 </div>
                             </div>
@@ -111,12 +117,12 @@
                     <div class="vg-element vg-full">
                         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
                             <div class="vg-element vg-full">
-                                <div class="vg-element vg-half vg-left">
+                                <div class="vg-element vg-full vg-left">
                                     <span class="vg-header">Цена</span>
                                 </div>
                             </div>
-                            <div class="vg-element vg-full  vg-no-space-top">
-                                <div class="vg-element vg-half vg-left  vg-no-space-top">
+                            <div class="vg-element vg-full vg-no-space-top">
+                                <div class="vg-element vg-full vg-left  vg-no-space-top">
                                     <input type="text" name="price" class="vg-input vg-text vg-firm-color1" value="">
                                 </div>
                             </div>
@@ -125,12 +131,12 @@
                     <div class="vg-wrap vg-element vg-full">
                         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
                             <div class="vg-element vg-full">
-                                <div class="vg-element vg-half vg-left">
+                                <div class="vg-element vg-full vg-left">
                                     <span class="vg-header">Ключевые слова</span>
                                 </div>
                             </div>
                             <div class="vg-element vg-full vg-no-space-top">
-                                <div class="vg-element vg-half vg-left  vg-no-space-top">
+                                <div class="vg-element vg-full vg-left  vg-no-space-top">
                                     <textarea name="keywords" class="vg-input vg-text vg-full vg-firm-color1"></textarea>
                                 </div>
                             </div>
@@ -139,139 +145,578 @@
                     <div class="vg-wrap vg-element vg-full">
                         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
                             <div class="vg-element vg-full">
-                                <div class="vg-element vg-half vg-left">
+                                <div class="vg-element vg-full vg-left">
                                     <span class="vg-header">Метаописание</span>
                                 </div>
                             </div>
                             <div class="vg-element vg-full vg-no-space-top">
-                                <div class="vg-element vg-half vg-left  vg-no-space-top">
+                                <div class="vg-element vg-full vg-left  vg-no-space-top">
                                     <textarea name="description" class="vg-input vg-text vg-full vg-firm-color1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vg-element vg-full  vg-no-space-top">
+                        <div class="vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-wrap vg-element vg-half vg-left vg-no-space-top">
+                                <div class="vg-element vg-full vg-left">
+                                    <span class="vg-header">Показать на сайте</span>
+                                </div>
+                                <div class="vg-wrap vg-element vg-fourth">
+                                    <label class="vg-element vg-full vg-center vg-left vg-space-between" for="yes">
+                <span class="vg-text vg-half">Да</span>
+                <input id="yes" type="radio" name="visible" class="vg-input vg-half" value="1" checked="">
+            </label>
+                                    <label class="vg-element vg-full vg-center vg-left vg-space-between" for="no">
+                <span class="vg-text vg-half">Нет</span>
+                <input id="no" type="radio" name="visible" class="vg-input vg-half" value="0">
+            </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="vg-wrap vg-element vg-full">
                         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
-                            <div class="vg-element vg-full vg-left">
-                                <span class="vg-header">Краткое описание</span>
-                            </div>
-                            <div class="vg-element vg-full  vg-no-space-top">
-                                <div class="vg-element vg-half vg-center  vg-no-space-top">
-                                    <input class="vg-input vg-text vg-firm-color1" value="Ключи">
+                            <div class="vg-element vg-full">
+                                <div class="vg-element vg-full vg-left">
+                                    <span class="vg-header">Позиция</span>
                                 </div>
                             </div>
+                            <div class="vg-element vg-full vg-no-space-top">
+                                <div class="vg-element vg-full vg-left  vg-no-space-top">
+                                    <select class="vg-input vg-text vg-full vg-firm-color1">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vg-wrap vg-element vg-second">
+                    <div class="vg-element vg-full">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow img_container">
+                            <div class="vg-element vg-full">
+                                <div class="vg-element vg-half vg-left">
+                                    <span class="vg-header">img</span>
+                                </div>
+                            </div>
+                            <div class="vg-wrap vg-element vg-full vg-no-space-top">
+                                <label class="vg-wrap vg-full file_upload vg-relative vg-left">
+            <span class="vg-element vg-full vg-input vg-text vg-left vg-button">Выбрать</span>
+            <input type="file" name="img" class="single_img">
+        </label>
+                            </div>
+                            <div class="vg-wrap vg-element vg-full vg-no-space-top">
+                                <div class="vg-element vg-left img_show">
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="vg-element vg-full">
-                        <div class="vg-element vg-full vg-firm-background-color4 vg-box-shadow">
-                            <div class="vg-wrap vg-element vg-half vg-left">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-element vg-full">
                                 <div class="vg-element vg-full vg-left">
-                                    <span class="vg-header">Показать</span>
+                                    <span class="vg-header">Галерея</span>
                                 </div>
-                                <div class="vg-wrap vg-element vg-fourth">
-                                    <label class="vg-element vg-full vg-center vg-left" for="no">
-                                        <span class="vg-text vg-half">Нет</span>
-                                        <input id="no" type="radio" name="display" class="vg-input vg-half" value="0">
-                                    </label>
-                                    <label class="vg-element vg-full vg-center vg-left vg-space-between" for="yes">
-                                        <span class="vg-text vg-half">Да</span>
-                                        <input id="yes" type="radio" name="display" class="vg-input vg-half" value="0">
-                                    </label>
+                            </div>
+                            <div class="vg-wrap vg-element vg-full">
+                                <label class="vg-dotted-square vg-center">
+                <img src="/template/admin/img/plus.png" alt="plus">
+                <input style="display: none;" type="file">
+            </label>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
+                                </div>
+                                <div class="vg-dotted-square">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=" vg-element vg-half img_container vg-firm-background-color4 vg-box-shadow vg-block">
-                        <div class="vg-element vg-full">
-                            <div class="vg-wrap vg-element vg-full">
-                                <div class="vg-element vg-full">
-                                    <div class="vg-element vg-half vg-left">
-                                        <span class="vg-header">img</span>
-                                    </div>
-                                </div>
-                                <div class="vg-wrap vg-element vg-full">
-                                    <label class="vg-wrap vg-full file_upload vg-relative vg-left">
-                                        <span class="vg-element vg-input vg-button vg-text">Выбрать</span>
-                                        <input type="file" name="img" class="single_img">
-                                    </label>
-                                </div>
-                                <div class="vg-wrap vg-element vg-half">
-                                    <div class="vg-element img_show">
-                                    </div>
-                                </div>
+                <div class="vg-wrap vg-element vg-third">
+                    <div class="vg-wrap vg-element vg-full">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-element vg-full vg-left">
+                                <span class="vg-header">Краткое описание</span>
                             </div>
-                        </div>
-                        <div class="vg-element vg-full">
-                            <div class="vg-wrap vg-element vg-full">
-                                <div class="vg-element vg-full">
-                                    <div class="vg-element vg-half vg-left">
-                                        <span class="vg-header">Галерея</span>
-                                    </div>
-                                </div>
-                                <div class="vg-wrap vg-element vg-full vg-space-between vg-no-space-top">
-                                    <label class="vg-dotted-square vg-center">
-                                        <img src="./img/plus.png" alt="plus">
-                                        <input style="display: none;" type="file">
-                                    </label>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                    <div class="vg-dotted-square">
-                                    </div>
-                                </div>
+                            <div class="vg-element vg-full vg-left vg-no-space-top">
+                                <textarea name="short_content" class="vg-input vg-text vg-full vg-firm-color1"></textarea>
                             </div>
                         </div>
                     </div>
-
+                    <div class="vg-wrap vg-element vg-full">
+                        <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
+                            <div class="vg-element vg-full vg-left">
+                                <span class="vg-header">Описание</span>
+                            </div>
+                            <div class="vg-element vg-full vg-left vg-no-space-top">
+                                <textarea name="content" class="vg-input vg-text vg-full vg-firm-color1"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="vg-element vg-full text_container">
+                <div class="vg-wrap vg-element vg-full">
                     <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
-                        <div class="vg-element vg-full">
-                            <div class="vg-wrap vg-element vg-full">
-                                <div class="vg-element vg-full vg-center">
-                                    <span class="vg-header">Текст</span>
-                                </div>
-                                <div class="vg-element vg-full vg-center vg-no-space-top">
-                                    <textarea class="vg-input vg-text vg-full vg-firm-color5">Текст</textarea>
-                                </div>
+                        <div class="vg-element vg-half vg-left">
+                            <div class="vg-element">
+                                <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
+                            </div>
+                            <div class="vg-element">
+                                <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Удалить">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="vg-element vg-full">
-                    <div class="vg-element vg-full vg-firm-background-color4 vg-box-shadow">
-                        <div class="vg-element vg-full vg-left">
-                            <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
-                        </div>
-                    </div>
-                </div>
+
+            </form>
         </div>
-        </form>
+        <!--.vg-main.vg-right-->
     </div>
+    <!--.vg-carcass-->
+    <script>
+        var path = '/';
+        var cropes = JSON.parse('{"cut_1":[940,790],"cut_2":[16,9]}');
+    </script>
+    <script src="/template/admin/js/scripts.min.js"></script>
+    <script src="/template/admin/js/tinymce/tinymce.min.js"></script>
+    <script src="/template/admin/js/tiny_script.js"></script>
+    <script src="/template/admin/js/jcrop/jquery.Jcrop.min.js"></script>
+    <script src="/template/admin/js/jcrop/jcrop_set.js"></script>
+
+
+
+    <script charset="UTF-8" type="text/javascript">
+        vkdId = 'ekfkljjojhnnhfedepfnbhhfjklagngk';
+    </script>
+    <script charset="UTF-8" type="text/javascript">
+        extensionsURL = 'chrome-extension://ekfkljjojhnnhfedepfnbhhfjklagngk/';
+    </script>
+    <script charset="UTF-8" type="text/javascript">
+        vkd_settings = JSON.parse('{"showBitrate":"showHover","landCode":"ru"}')
+    </script>
+    <script charset="UTF-8" type="text/javascript" src="chrome-extension://ekfkljjojhnnhfedepfnbhhfjklagngk/assets/js/audio_vk.js"></script>
+    <div id="mceu_90" class="mce-widget mce-tooltip mce-tooltip-n" role="presentation" style="left: 754.953px; top: 1135.28px; z-index: 131070; display: none;">
+        <div class="mce-tooltip-arrow"></div>
+        <div class="mce-tooltip-inner">Уменьшить отступ</div>
     </div>
+    <div id="mceu_91" class="mce-container mce-panel mce-floatpanel mce-menu mce-contextmenu mce-menu-has-icons mce-menu-align" hidefocus="1" tabindex="-1" role="application" style="border-width: 1px; z-index: 65535; left: 393.328px; top: 1281.28px; width: 200.078px; display: none;">
+        <div id="mceu_91-body" class="mce-container-body mce-stack-layout" role="menu" style="width: 200.078px;">
+            <div id="mceu_92" class="mce-menu-item mce-menu-item-normal mce-first mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-link"></i>&nbsp;<span id="mceu_92-text" class="mce-text">Вставить ссылку</span></div>
+            <div id="mceu_93" class="mce-menu-item mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-image"></i>&nbsp;<span id="mceu_93-text" class="mce-text">Вставить изображение</span></div>
+            <div id="mceu_94" class="mce-menu-item mce-menu-item-expand mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem" aria-expanded="true"><i class="mce-ico mce-i-table"></i>&nbsp;<span id="mceu_94-text" class="mce-text">Вставить таблицу</span>
+                <div class="mce-caret"></div>
+            </div>
+            <div id="mceu_95" class="mce-menu-item mce-menu-item-sep mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="separator"></div>
+            <div id="mceu_96" class="mce-menu-item mce-menu-item-expand mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem" aria-haspopup="true"><i class="mce-ico mce-i-none"></i>&nbsp;<span id="mceu_96-text" class="mce-text">Ячейка</span>
+                <div class="mce-caret"></div>
+            </div>
+            <div id="mceu_97" class="mce-menu-item mce-menu-item-expand mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem" aria-haspopup="true"><i class="mce-ico mce-i-none"></i>&nbsp;<span id="mceu_97-text" class="mce-text">Строка</span>
+                <div class="mce-caret"></div>
+            </div>
+            <div id="mceu_98" class="mce-menu-item mce-menu-item-expand mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem" aria-haspopup="true"><i class="mce-ico mce-i-none"></i>&nbsp;<span id="mceu_98-text" class="mce-text">Столбец</span>
+                <div class="mce-caret"></div>
+            </div>
+            <div id="mceu_99" class="mce-menu-item mce-menu-item-normal mce-last mce-stack-layout-item mce-disabled" tabindex="-1" role="menuitem" aria-disabled="true"><i class="mce-ico mce-i-none"></i>&nbsp;<span id="mceu_99-text" class="mce-text">Удалить таблицу</span></div>
+        </div>
+    </div>
+    <div id="mceu_100" class="mce-container mce-panel mce-floatpanel mce-menu mce-menu-sub mce-menu-align mce-menu-sub-tr-tl" hidefocus="1" tabindex="-1" role="application" style="border-width: 1px; z-index: 65537; left: 594.406px; top: 1347.28px; width: 180px; display: none;">
+        <div id="mceu_100-body" class="mce-container-body mce-stack-layout" role="menu" style="width: 180px;">
+            <div id="mceu_101" class="mce-container mce-first mce-last mce-stack-layout-item">
+                <div id="mceu_101-body" class="mce-container-body mce-undefined">
+                    <table role="grid" class="mce-grid mce-grid-border" aria-readonly="true">
+                        <tbody>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid0" href="#" data-mce-x="0" data-mce-y="0" class="mce-active"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid1" href="#" data-mce-x="1" data-mce-y="0"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid2" href="#" data-mce-x="2" data-mce-y="0"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid3" href="#" data-mce-x="3" data-mce-y="0"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid4" href="#" data-mce-x="4" data-mce-y="0"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid5" href="#" data-mce-x="5" data-mce-y="0"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid6" href="#" data-mce-x="6" data-mce-y="0"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid7" href="#" data-mce-x="7" data-mce-y="0"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid8" href="#" data-mce-x="8" data-mce-y="0"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid9" href="#" data-mce-x="9" data-mce-y="0"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid10" href="#" data-mce-x="0" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid11" href="#" data-mce-x="1" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid12" href="#" data-mce-x="2" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid13" href="#" data-mce-x="3" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid14" href="#" data-mce-x="4" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid15" href="#" data-mce-x="5" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid16" href="#" data-mce-x="6" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid17" href="#" data-mce-x="7" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid18" href="#" data-mce-x="8" data-mce-y="1"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid19" href="#" data-mce-x="9" data-mce-y="1"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid20" href="#" data-mce-x="0" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid21" href="#" data-mce-x="1" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid22" href="#" data-mce-x="2" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid23" href="#" data-mce-x="3" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid24" href="#" data-mce-x="4" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid25" href="#" data-mce-x="5" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid26" href="#" data-mce-x="6" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid27" href="#" data-mce-x="7" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid28" href="#" data-mce-x="8" data-mce-y="2"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid29" href="#" data-mce-x="9" data-mce-y="2"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid30" href="#" data-mce-x="0" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid31" href="#" data-mce-x="1" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid32" href="#" data-mce-x="2" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid33" href="#" data-mce-x="3" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid34" href="#" data-mce-x="4" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid35" href="#" data-mce-x="5" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid36" href="#" data-mce-x="6" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid37" href="#" data-mce-x="7" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid38" href="#" data-mce-x="8" data-mce-y="3"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid39" href="#" data-mce-x="9" data-mce-y="3"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid40" href="#" data-mce-x="0" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid41" href="#" data-mce-x="1" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid42" href="#" data-mce-x="2" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid43" href="#" data-mce-x="3" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid44" href="#" data-mce-x="4" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid45" href="#" data-mce-x="5" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid46" href="#" data-mce-x="6" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid47" href="#" data-mce-x="7" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid48" href="#" data-mce-x="8" data-mce-y="4"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid49" href="#" data-mce-x="9" data-mce-y="4"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid50" href="#" data-mce-x="0" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid51" href="#" data-mce-x="1" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid52" href="#" data-mce-x="2" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid53" href="#" data-mce-x="3" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid54" href="#" data-mce-x="4" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid55" href="#" data-mce-x="5" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid56" href="#" data-mce-x="6" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid57" href="#" data-mce-x="7" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid58" href="#" data-mce-x="8" data-mce-y="5"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid59" href="#" data-mce-x="9" data-mce-y="5"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid60" href="#" data-mce-x="0" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid61" href="#" data-mce-x="1" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid62" href="#" data-mce-x="2" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid63" href="#" data-mce-x="3" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid64" href="#" data-mce-x="4" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid65" href="#" data-mce-x="5" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid66" href="#" data-mce-x="6" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid67" href="#" data-mce-x="7" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid68" href="#" data-mce-x="8" data-mce-y="6"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid69" href="#" data-mce-x="9" data-mce-y="6"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid70" href="#" data-mce-x="0" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid71" href="#" data-mce-x="1" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid72" href="#" data-mce-x="2" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid73" href="#" data-mce-x="3" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid74" href="#" data-mce-x="4" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid75" href="#" data-mce-x="5" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid76" href="#" data-mce-x="6" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid77" href="#" data-mce-x="7" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid78" href="#" data-mce-x="8" data-mce-y="7"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid79" href="#" data-mce-x="9" data-mce-y="7"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid80" href="#" data-mce-x="0" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid81" href="#" data-mce-x="1" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid82" href="#" data-mce-x="2" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid83" href="#" data-mce-x="3" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid84" href="#" data-mce-x="4" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid85" href="#" data-mce-x="5" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid86" href="#" data-mce-x="6" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid87" href="#" data-mce-x="7" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid88" href="#" data-mce-x="8" data-mce-y="8"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid89" href="#" data-mce-x="9" data-mce-y="8"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid90" href="#" data-mce-x="0" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid91" href="#" data-mce-x="1" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid92" href="#" data-mce-x="2" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid93" href="#" data-mce-x="3" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid94" href="#" data-mce-x="4" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid95" href="#" data-mce-x="5" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid96" href="#" data-mce-x="6" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid97" href="#" data-mce-x="7" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid98" href="#" data-mce-x="8" data-mce-y="9"></a>
+                                </td>
+                                <td role="gridcell" tabindex="-1">
+                                    <a id="mcegrid99" href="#" data-mce-x="9" data-mce-y="9"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mce-text-center" role="presentation">1 x 1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mceu_102" class="mce-container mce-panel mce-floatpanel mce-menu mce-menu-has-icons mce-menu-align" hidefocus="1" tabindex="-1" role="application" style="border-width: 1px; z-index: 65536; left: 176.328px; top: 1100.28px; width: 234px; display: none;">
+        <div id="mceu_102-body" class="mce-container-body mce-stack-layout" role="menu" style="width: 234px;">
+            <div id="mceu_103" class="mce-menu-item mce-menu-item-normal mce-first mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-newdocument"></i>&nbsp;<span id="mceu_103-text" class="mce-text">Новый документ</span>
+                <div id="mceu_103-shortcut" class="mce-menu-shortcut">Ctrl+N</div>
+            </div>
+            <div id="mceu_104" class="mce-menu-item mce-menu-item-normal mce-last mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-print"></i>&nbsp;<span id="mceu_104-text" class="mce-text">Печать</span>
+                <div id="mceu_104-shortcut" class="mce-menu-shortcut">Ctrl+P</div>
+            </div>
+        </div>
+    </div>
+    <div id="mceu_105" class="mce-container mce-panel mce-floatpanel mce-menu mce-menu-has-icons mce-menu-align" hidefocus="1" tabindex="-1" role="application" style="border-width: 1px; z-index: 65536; left: 248.641px; top: 1100.28px; width: 226px; display: none;">
+        <div id="mceu_105-body" class="mce-container-body mce-stack-layout" role="menu" style="width: 226px;">
+            <div id="mceu_106" class="mce-menu-item mce-menu-item-normal mce-first mce-stack-layout-item mce-disabled" tabindex="-1" role="menuitem" aria-disabled="true"><i class="mce-ico mce-i-undo"></i>&nbsp;<span id="mceu_106-text" class="mce-text">Вернуть</span>
+                <div id="mceu_106-shortcut" class="mce-menu-shortcut">Ctrl+Z</div>
+            </div>
+            <div id="mceu_107" class="mce-menu-item mce-menu-item-normal mce-stack-layout-item mce-disabled" tabindex="-1" role="menuitem" aria-disabled="true"><i class="mce-ico mce-i-redo"></i>&nbsp;<span id="mceu_107-text" class="mce-text">Отменить</span>
+                <div id="mceu_107-shortcut" class="mce-menu-shortcut">Ctrl+Y</div>
+            </div>
+            <div id="mceu_108" class="mce-menu-item mce-menu-item-sep mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="separator"></div>
+            <div id="mceu_109" class="mce-menu-item mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-cut"></i>&nbsp;<span id="mceu_109-text" class="mce-text">Вырезать</span>
+                <div id="mceu_109-shortcut" class="mce-menu-shortcut">Ctrl+X</div>
+            </div>
+            <div id="mceu_110" class="mce-menu-item mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-copy"></i>&nbsp;<span id="mceu_110-text" class="mce-text">Копировать</span>
+                <div id="mceu_110-shortcut" class="mce-menu-shortcut">Ctrl+C</div>
+            </div>
+            <div id="mceu_111" class="mce-menu-item mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-paste"></i>&nbsp;<span id="mceu_111-text" class="mce-text">Вставить</span>
+                <div id="mceu_111-shortcut" class="mce-menu-shortcut">Ctrl+V</div>
+            </div>
+            <div id="mceu_112" class="mce-menu-item mce-menu-item-checkbox mce-stack-layout-item" tabindex="-1" role="menuitemcheckbox"><i class="mce-ico mce-i-selected"></i>&nbsp;<span id="mceu_112-text" class="mce-text">Вставить как текст</span></div>
+            <div id="mceu_113" class="mce-menu-item mce-menu-item-sep mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="separator"></div>
+            <div id="mceu_114" class="mce-menu-item mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-selectall"></i>&nbsp;<span id="mceu_114-text" class="mce-text">Выделить все</span>
+                <div id="mceu_114-shortcut" class="mce-menu-shortcut">Ctrl+A</div>
+            </div>
+            <div id="mceu_115" class="mce-menu-item mce-menu-item-sep mce-menu-item-normal mce-stack-layout-item" tabindex="-1" role="separator"></div>
+            <div id="mceu_116" class="mce-menu-item mce-menu-item-normal mce-last mce-stack-layout-item" tabindex="-1" role="menuitem"><i class="mce-ico mce-i-none"></i>&nbsp;<span id="mceu_116-text" class="mce-text">Поиск и замена</span>
+                <div id="mceu_116-shortcut" class="mce-menu-shortcut">Ctrl+F</div>
+            </div>
+        </div>
     </div>
 </body>
 
