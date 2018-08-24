@@ -355,6 +355,10 @@ label.vg-element {
     }
 }
 
+.active {
+    border-left: 2px solid #00bfe8;
+}
+
 
 /*global*/
 
