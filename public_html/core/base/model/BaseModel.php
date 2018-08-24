@@ -266,11 +266,11 @@ abstract class BaseModel{
         return $where;
     }
 
-    final public function delete($table, $id, $row = false, $row_name = 'id'){
+    final public function delete($table, $id, $id_row = 'id', $row = false){
         if($row){
-            $query = "UPDATE $table SET $row = '' WHERE id = $id";
+            $query = "UPDATE $table SET $row = '' WHERE $id_row = $id";
         }else{
-            $query = "DELETE FROM $table WHERE $row_name = $id";
+            $query = "DELETE FROM $table WHERE $id_row = $id";
         }
 
         $this->inst_driver->delete($query);

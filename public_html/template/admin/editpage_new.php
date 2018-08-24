@@ -7,7 +7,7 @@
                     <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
                 </div>
                 <div class="vg-element vg-padding-in-px">
-                    <a href = "link" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center">
+                    <a href="<?=PATH.ADMIN_PATH?>/delete/table/<?=$table?>/id_row/<?=$id_row?>/id/<?=$data[$id_row]?>" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center vg_delete">
                         <span>Удалить</span>
                     </a>
                 </div>
@@ -51,7 +51,7 @@
                     <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
                 </div>
                 <div class="vg-element vg-padding-in-px">
-                    <a href = "link" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center">
+                    <a href="<?=PATH.ADMIN_PATH?>/delete/table/<?=$table?>/id_row/<?=$id_row?>/id/<?=$data[$id_row]?>" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center vg_delete">
                         <span>Удалить</span>
                     </a>
                 </div>

@@ -42,6 +42,14 @@ class EditController extends BaseAdmin{
                 $this->data = $this->object_model->get($this->table)[0];
             }
 
+            if(!$this->data){
+                if($this->table){
+                    $this->redirect(PATH.ADMIN_PATH . '/show/' . $this->table);
+                }else{
+                    $this->redirect(PATH.ADMIN_PATH);
+                }
+            }
+
             if($res_arr['menu_pos']){
                 $this->menu_pos = $this->object_model->get($this->table,
                         ['fields' => ['COUNT(*) AS count']

@@ -22,14 +22,15 @@ class ShowController extends BaseAdmin{
         }
         if(in_array('menu_pos', $columns)){
             $order = 'menu_pos';
+            $this->data = $this->object_model->get($this->table, [
+                'fields' => ['id', 'name', 'img'],
+                'order' => [$order]
+            ]);
         }else{
-            $order = 'id';
+            $this->data = $this->object_model->get($this->table, [
+                'fields' => ['id', 'name', 'img']
+            ]);
         }
-
-        $this->data = $this->object_model->get($this->table, [
-            'fields' => ['id', 'name', 'img'],
-            'order' => [$order]
-        ]);
     }
 
     protected function outputData(){
