@@ -2,9 +2,6 @@
         </div><!--.vg-carcass-->
 
         <div class="vg_modal vg-center">
-            <div class="vg-notification vg-center vg-box-shadow vg-text success">
-                <span>Изменения сохранены</span>
-            </div>
             <?php
             if(isset($_SESSION['res']['answer'])){
                 echo $_SESSION['res']['answer'];
