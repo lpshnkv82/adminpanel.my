@@ -17,7 +17,7 @@
     <?php
     foreach($columns as $class => $block){
         echo '<div class="vg-wrap vg-element ' . $class . '">';
-        if($class == 'vg-second') {
+        if($class == 'vg-img') {
             echo '<div class="vg-firm-background-color4 vg-box-shadow">';
         }
 
@@ -32,7 +32,7 @@
             }
         }
         echo '</div>';
-        if($class == 'vg-second') {
+        if($class == 'vg-img') {
             echo '</div>';
         }
     }
