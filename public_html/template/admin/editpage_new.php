@@ -13,6 +13,7 @@
                 </div>
             </div>
         </div>
+    </div>
     <input type="hidden" name="<?=$id_row?>" value="<?=$data[$id_row]?>">
     <input type="hidden" name="table" value="<?=$table?>">
 
