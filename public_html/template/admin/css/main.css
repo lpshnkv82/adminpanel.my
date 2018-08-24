@@ -263,6 +263,7 @@ textarea {
   height: 200px; }
 
 .vg-dotted-square {
+  cursor: pointer;
   border: 2px dotted #2f3b4c;
   margin: 0.7%;
   height: 5vw;
