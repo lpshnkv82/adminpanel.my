@@ -285,16 +285,17 @@ textarea
         width: 10vw
 
 .vg-first, .vg-second
-    flex-basis: 49%
+    flex-basis: $half-size
     @media (max-width: 768px) 
         flex-basis: auto
 
 .vg-second
     display: block
-    background: #fff
+    &>div
+        height: 100%
 
 .vg-third
-    flex-basis: 98%
+    flex-basis: $full-size
 
 .img_show
     display: block
@@ -303,3 +304,6 @@ textarea
 .mce-tinymce.mce-container.mce-panel
     width: 100%
     max-width: 98vw
+
+.vg-no-padding-right
+    padding-right: 0

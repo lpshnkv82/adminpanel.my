@@ -13,6 +13,10 @@
     <?php
     foreach($columns as $class => $block){
         echo '<div class="vg-wrap vg-element ' . $class . '">';
+        if($class == 'vg-second') {
+            echo '<div class="vg-firm-background-color4 vg-box-shadow">';
+        }
+
         foreach ($block as $row) {
             foreach ($templateArr as $type => $items) {
                 if (in_array($row, $items)) {
@@ -24,6 +28,9 @@
             }
         }
         echo '</div>';
+        if($class == 'vg-second') {
+            echo '</div>';
+        }
     }
     ?>
 

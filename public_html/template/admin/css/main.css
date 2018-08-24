@@ -391,7 +391,7 @@ textarea {
 
 .vg-first,
 .vg-second {
-    flex-basis: 49%;
+    flex-basis: 49.3%;
 }
 
 @media (max-width: 768px) {
@@ -403,11 +403,14 @@ textarea {
 
 .vg-second {
     display: block;
-    background: #fff;
+}
+
+.vg-second>div {
+    height: 100%;
 }
 
 .vg-third {
-    flex-basis: 98%;
+    flex-basis: 100%;
 }
 
 .img_show {
@@ -418,4 +421,8 @@ textarea {
 .mce-tinymce.mce-container.mce-panel {
     width: 100%;
     max-width: 98vw;
+}
+
+.vg-no-padding-right {
+    padding-right: 0;
 }
