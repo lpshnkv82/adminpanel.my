@@ -300,3 +300,16 @@ textarea {
 
 .vg-padding-in-px {
   padding: 10px; }
+
+.vg-notification {
+  position: fixed;
+  z-index: 1;
+  top: 13%;
+  padding: 2vw; }
+  .vg-notification.success {
+    background: #ffffff;
+    border: 1px solid #eceef2;
+    color: #2f3b4c; }
+  .vg-notification.error {
+    background: #2f3b4c;
+    color: #eceef2; }
