@@ -21,6 +21,11 @@ class AjaxController extends BaseController{
                 exit(json_encode($this->deleteGalleryImg()));
                 break;
 
+            case 'sort_gallery_img':
+                $this->ajaxData = json_decode($_POST['data'], true);
+                exit(json_encode($this->sortGalleryImg()));
+                break;
+
             case 'send_mail':
                 exit(json_encode($this->sendMail()));
                 break;
@@ -29,6 +34,30 @@ class AjaxController extends BaseController{
                 $this->ajaxData = json_decode($_POST['data'], true);
                 exit($this->createJsThumbnail());
                 break;
+        }
+    }
+
+    protected function sortGalleryImg(){
+        $id = $this->ajaxData['id'];
+        $id_row = $this->ajaxData['id_row'];
+        $row = $this->ajaxData['row'];
+        $table = $this->ajaxData['table'];
+        if($id && $row){
+            unset($this->ajaxData['id']);
+            unset($this->ajaxData['row']);
+            unset($this->ajaxData['id_row']);
+            unset($this->ajaxData['table']);
+
+            $data = [];
+
+            $data[$id_row] = $id;
+            $data[$row] = implode("|", $this->ajaxData);
+
+            if($this->admin_model->edit($table, ['fields' => $data])){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
