@@ -7,7 +7,9 @@
                     <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
                 </div>
                 <div class="vg-element vg-padding-in-px">
-                    <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Удалить">
+                    <a href = "link" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center">
+                        <span>Удалить</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -48,7 +50,9 @@
                     <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
                 </div>
                 <div class="vg-element vg-padding-in-px">
-                    <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Удалить">
+                    <a href = "link" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center">
+                        <span>Удалить</span>
+                    </a>
                 </div>
             </div>
         </div>
