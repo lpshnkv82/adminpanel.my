@@ -308,10 +308,9 @@ textarea {
   padding: 2vw; }
 
 .success {
-  background: #ffffff;
-  border: 1px solid #eceef2;
-  color: #2f3b4c; }
+  background: #00bfe8;
+  color: #eceef2; }
 
 .error {
-  background: #2f3b4c;
+  background: #ff8080;
   color: #eceef2; }
