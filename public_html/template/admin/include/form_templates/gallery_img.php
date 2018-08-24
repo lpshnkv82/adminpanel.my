@@ -10,31 +10,31 @@
                     <img src="<?=PATH.ADMIN_TEMPLATE?>img/plus.png" alt="plus">
                     <input class="gallery_img" style="display: none;" type="file" name="<?=$row?>[]" multiple>
                 </label>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
-                <div class="vg-dotted-square empty_container">
+                <div class="vg-dotted-square empty_container vg-center">
                 </div>
         </div>
     </div>
