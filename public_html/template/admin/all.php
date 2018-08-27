@@ -1,5 +1,5 @@
 <div class="vg-wrap vg-element vg-ninteen-of-twenty">
-        <div class="vg-element vg-fourth height10">
+        <div class="vg-element vg-fourth">
             <a href="<?=PATH.ADMIN_PATH?>/add/<?=$table?>" class="vg-wrap vg-element vg-full vg-firm-background-color3 vg-box-shadow">
                 <div class="vg-element vg-half vg-center">
                     <img src="<?=PATH.ADMIN_TEMPLATE?>img/plus.png" alt="plus">
@@ -11,7 +11,7 @@
         </div>
         <?php if($data):?>
             <?php foreach($data as $item):?>
-                <div class="vg-element vg-fourth height10">
+                <div class="vg-element vg-fourth">
                     <a href="<?=PATH.ADMIN_PATH?>/edit/<?=$table?>/<?=$item['id']?>" class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
                         <div class="vg-element vg-half vg-center">
                             <?php if($item['img']):?>
