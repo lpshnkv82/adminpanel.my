@@ -22,17 +22,24 @@
             </a>
         </div>
         <div class="vg-element vg-ninteen-of-twenty vg-firm-background-color4 vg-space-between  vg-box-shadow">
-            <div class="vg-element vg-fifth">
-                <div class="vg-element vg-half vg-center" id="hideButton">
+            <div class="vg-element vg-third">
+                <div class="vg-element vg-fifth vg-center" id="hideButton">
                     <div>
                         <img src="<?=PATH.ADMIN_TEMPLATE?>img/menu-button.png" alt="">
                     </div>
                 </div>
-                <div class="vg-element vg-half vg-center vg-search" id="searchButton">
+                <div class="vg-element vg-wrap-size vg-center vg-search  vg-relative" id="searchButton">
                     <div>
                         <img src="<?=PATH.ADMIN_TEMPLATE?>img/search.png" alt="">
                     </div>
                     <input type="text" class="vg-input vg-text">
+                    <div class="vg-element vg-firm-background-color4 vg-box-shadow search_links">
+                        <a class="vg-text" href="/">asaskldjasldjhklasdd</a>
+                        <a class="vg-text" href="/">asaskldjasldjhklasdd</a>
+                        <a class="vg-text" href="/">asaskldj asldjhklasddasask ldjasldjhkl sddasaskldjasldj hklasddasaskl djasldjh klasddasaskldja ldjhklasdd</a>
+                        <a class="vg-text" href="/">asaskldjasldjhklasdd</a>
+                        <a class="vg-text" href="/">asaskldjasldjhklasdd</a>
+                    </div>
                 </div>
             </div>
             <div class="vg-element vg-fifth">

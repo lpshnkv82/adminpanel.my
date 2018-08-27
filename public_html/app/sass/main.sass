@@ -5,7 +5,7 @@ $color4: #ffffff
 $color5: #b0bec5
 $offset: 0.7%
 $full-size: 100%
-$wrap-size: 80% + $offset
+$wrap-size: $full-size * 0.8 - $offset
 $half-size: $full-size / 2 - $offset
 $third-size: $full-size / 3 - $offset
 $fourth-size: $full-size / 4 - $offset
@@ -73,6 +73,9 @@ label.vg-element
 
 .vg-wrap
     flex-wrap: wrap
+
+.vg-wrap-size
+    flex-basis: $wrap-size
 
 .vg-element
     display: flex
@@ -223,7 +226,8 @@ label.vg-element
         display: block
     input
         display: none
-        width: 100%
+    .search_links
+        display: none
 
 .vg-search-reverse
     img
@@ -231,6 +235,20 @@ label.vg-element
     input
         display: block
         width: 100%
+    .search_links
+        display: block
+        position: absolute
+        top: 54px
+        @media (max-width:1400px)
+            top: 40px
+        z-index: 2
+        left: 0
+        width: 100%
+        a
+            display: block
+            &:hover
+                background: $color1
+                color: $color3
 
 .vg-relative
     position: relative

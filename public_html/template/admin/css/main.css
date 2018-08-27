@@ -60,6 +60,9 @@ label.vg-element {
 .vg-wrap {
   flex-wrap: wrap; }
 
+.vg-wrap-size {
+  flex-basis: 79.3%; }
+
 .vg-element {
   display: flex;
   padding: 0.35%; }
@@ -208,8 +211,10 @@ label.vg-element {
   display: block; }
 
 .vg-search input {
-  display: none;
-  width: 100%; }
+  display: none; }
+
+.vg-search .search_links {
+  display: none; }
 
 .vg-search-reverse img {
   display: none; }
@@ -217,6 +222,22 @@ label.vg-element {
 .vg-search-reverse input {
   display: block;
   width: 100%; }
+
+.vg-search-reverse .search_links {
+  display: block;
+  position: absolute;
+  top: 54px;
+  z-index: 2;
+  left: 0;
+  width: 100%; }
+  @media (max-width: 1400px) {
+    .vg-search-reverse .search_links {
+      top: 40px; } }
+  .vg-search-reverse .search_links a {
+    display: block; }
+    .vg-search-reverse .search_links a:hover {
+      background: #2f3b4c;
+      color: #eceef2; }
 
 .vg-relative {
   position: relative; }
