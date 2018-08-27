@@ -222,6 +222,9 @@ label.vg-element {
 }
 
 @media (max-width: 768px) {
+  font-size: 1.1vw;
+  margin-bottom: 10px; }
+  @media (max-width: 1200px) {
     .vg-header {
         font-size: 14px;
     }
@@ -254,6 +257,7 @@ label.vg-element {
         font-size: 12px;
     }
 }
+      font-size: 12px; } }
 
 .vg-text2 {
     font-size: 1vw;
@@ -444,6 +448,7 @@ textarea {
         flex-basis: auto;
     }
 }
+      flex-basis: 100%; } }
 
 .vg-img {
     display: block;
