@@ -6,11 +6,6 @@
                 <div class="vg-element vg-padding-in-px">
                     <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
                 </div>
-                <div class="vg-element vg-padding-in-px">
-                    <a href = "link" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center">
-                        <span>Удалить</span>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
@@ -48,11 +43,6 @@
         <div class="vg-element vg-half vg-left">
                 <div class="vg-element vg-padding-in-px">
                     <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
-                </div>
-                <div class="vg-element vg-padding-in-px">
-                    <a href = "link" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center">
-                        <span>Удалить</span>
-                    </a>
                 </div>
             </div>
         </div>

@@ -15,9 +15,13 @@ class ShowController extends BaseAdmin{
 
         $res = $this->object_model->showColumns($this->table);
 
+
         if($res){
             foreach($res as $col){
                 $columns[] = $col['Field'];
+                if($col['Key'] == 'PRI') $fields['id_row'] = $col['Field'];
+                if($col['Fields'] == 'name') $fields['name'] = $col['Field'];
+                if($col['Fields'] == 'img') $fields['img'] = $col['Field'];
             }
         }
         if(in_array('menu_pos', $columns)){

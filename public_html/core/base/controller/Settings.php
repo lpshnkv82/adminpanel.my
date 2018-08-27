@@ -33,7 +33,7 @@ class Settings
         'textarea' => ['keywords', 'description', 'content', 'short_content'],
         'radio' => ['visible'],
         'img' => ['img'],
-        'gallery_img' => ['gallery_img']
+        'gallery_img' => ['gallery_img', 'test_gallery_img']
     ];
 
     private $blockNeedle = [
