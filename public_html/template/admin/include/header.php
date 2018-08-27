@@ -33,13 +33,7 @@
                         <img src="<?=PATH.ADMIN_TEMPLATE?>img/search.png" alt="">
                     </div>
                     <input type="text" name="search" class="vg-input vg-text">
-                    <div class="vg-element vg-firm-background-color4 vg-box-shadow search_links search_res">
-                        <a class="vg-text" href="/">asaskldjasldjhklasdd</a>
-                        <a class="vg-text" href="/">asaskldjasldjhklasdd</a>
-                        <a class="vg-text" href="/">asaskldj asldjhklasddasask ldjasldjhkl sddasaskldjasldj hklasddasaskl djasldjh klasddasaskldja ldjhklasdd</a>
-                        <a class="vg-text" href="/">asaskldjasldjhklasdd</a>
-                        <a class="vg-text" href="/">asaskldjasldjhklasdd</a>
-                    </div>
+                    <div class="vg-element vg-firm-background-color4 vg-box-shadow search_links search_res"></div>
                 </div>
             </div>
             <div class="vg-element vg-fifth">
