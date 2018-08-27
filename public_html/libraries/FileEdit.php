@@ -19,7 +19,7 @@ class FileEdit{
                         $file_arr['error'] = $file['error'][$i];
                         $file_arr['size'] = $file['size'][$i];
 
-                        $res = $this->checkFile($file_arr, $i);
+                        $res = $this->checkFile($file_arr, $i, $key);
                         if($res){
                             $this->img_arr[$key][] = $res;
                         }
@@ -37,7 +37,7 @@ class FileEdit{
         return $this->getFiles();
     }
 
-    protected function checkFile($image, $key = 0){
+    protected function checkFile($image, $key = 0, $prefix = ''){
 
         // Проверяем размер файлов и если он превышает заданный размер
         // завершаем выполнение скрипта и выводим ошибку
@@ -50,7 +50,7 @@ class FileEdit{
         $imageFormat = $imageFormat[1];
 
         // Генерируем новое имя для изображения.
-        $fileName = hash('crc32', time()) .'_'. $key . '.' . $imageFormat;
+        $fileName = $prefix . hash('crc32', time()) .'_'. $key . '.' . $imageFormat;
         $imageFullName = $_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$fileName;
 
         // Сохраняем тип изображения в переменную

@@ -26,6 +26,9 @@ class AjaxController extends BaseController{
                 exit(json_encode($this->sortGalleryImg()));
                 break;
 
+            case 'search':
+                exit(json_encode($this->ajaxSearch()));
+                break;
             case 'send_mail':
                 exit(json_encode($this->sendMail()));
                 break;
@@ -35,6 +38,59 @@ class AjaxController extends BaseController{
                 exit($this->createJsThumbnail());
                 break;
         }
+    }
+
+    protected function ajaxSearch(){
+        $temp_tables = $this->object_model->showTables();
+        $data = $this->clearStr($_POST['data']);
+        $result = [];
+        foreach($temp_tables as $item){
+            $table = reset($item);
+            if(!in_array($table, EXCEPTION_TABLES)){
+
+                $res = $this->object_model->showColumns($table);
+
+                $fields = '';
+                $where = '';
+                foreach($res as $col){
+                    $columns[] = $col['Field'];
+
+                    if($col['Key'] == 'PRI') $fields .= $col['Field'] . ',';
+
+                    if(mb_strpos($col['Field'], 'name') !== false){
+                        $fields[] = $col['Field'];
+
+                        if(!$where){
+                            $where .= "WHERE {$col['Field']} LIKE %$data%";
+                        }else{
+                            $where .= " OR {$col['Field']} LIKE %$data%";
+                        }
+                    }
+
+                    if(mb_strpos($col['Field'], 'content') !== false){
+                        if(!$where){
+                            $where .= "WHERE {$col['Field']} LIKE %$data%";
+                        }else{
+                            $where .= " OR {$col['Field']} LIKE %$data%";
+                        }
+                    }
+
+                    if(mb_strpos($col['Field'], 'description') !== false){
+                        if(!$where){
+                            $where .= "WHERE {$col['Field']} LIKE %$data%";
+                        }else{
+                            $where .= " OR {$col['Field']} LIKE %$data%";
+                        }
+                    }
+
+                }
+
+                $fields = rtrim($fields, ',');
+                $result[$table] = $this->admin_model->ajaxSearch($fields, $table, $where);
+            }
+        }
+
+        exit($_POST['data']);
     }
 
     protected function sortGalleryImg(){
@@ -136,6 +192,7 @@ class AjaxController extends BaseController{
 
     protected function deleteGalleryImg(){
         $id = $this->ajaxData['id'];
+        $id_row = $this->ajaxData['id_row'];
         $img = $this->ajaxData['img_src'];
         $table = $this->ajaxData['table'];
 
@@ -149,10 +206,10 @@ class AjaxController extends BaseController{
                 break;
         }
 
-        if($id){
+        if($id && $id_row){
             $images = $this->admin_model->get($table, [
                 'fields' => [$row],
-                'where' => ['id' => $id]
+                'where' => [$id_row => $id]
             ]);
         }else{
             $images = $this->admin_model->get($table, [
@@ -170,8 +227,8 @@ class AjaxController extends BaseController{
             }
             $new_gal = [];
             $all_rows = false;
-            if($id){
-                $new_gal['id'] = $id;
+            if($id && $id_row){
+                $new_gal[$id_row] = $id;
             }else{
                 $all_rows = true;
             }

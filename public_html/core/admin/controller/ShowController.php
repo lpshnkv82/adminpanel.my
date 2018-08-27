@@ -17,23 +17,34 @@ class ShowController extends BaseAdmin{
 
 
         if($res){
+            $fields = [];
             foreach($res as $col){
                 $columns[] = $col['Field'];
-                if($col['Key'] == 'PRI') $fields['id_row'] = $col['Field'];
-                if($col['Fields'] == 'name') $fields['name'] = $col['Field'];
-                if($col['Fields'] == 'img') $fields['img'] = $col['Field'];
+                if($col['Key'] == 'PRI') $fields['id_row'] = $col['Field'] . ' as id';
+                if(!$fields['name']){
+                    if(mb_strpos($col['Field'], 'name') !== false) $fields['name'] = $col['Field'] . ' as name';
+                }
+
+                if(!$fields['img']){
+                    if(mb_strpos($col['Field'], 'img') !== false) $fields['img'] = $col['Field'] . ' as img';
+                }
             }
         }
-        if(in_array('menu_pos', $columns)){
-            $order = 'menu_pos';
-            $this->data = $this->object_model->get($this->table, [
-                'fields' => ['id', 'name', 'img'],
-                'order' => [$order]
-            ]);
+
+        if($columns && $fields){
+            if(in_array('menu_pos', $columns)){
+                $order = 'menu_pos';
+                $this->data = $this->object_model->get($this->table, [
+                    'fields' => $fields,
+                    'order' => [$order]
+                ]);
+            }else{
+                $this->data = $this->object_model->get($this->table, [
+                    'fields' => $fields
+                ]);
+            }
         }else{
-            $this->data = $this->object_model->get($this->table, [
-                'fields' => ['id', 'name', 'img']
-            ]);
+            $this->redirect(PATH.ADMIN_PATH);
         }
     }
 

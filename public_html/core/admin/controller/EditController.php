@@ -92,14 +92,29 @@ class EditController extends BaseAdmin{
             $fileEdit = new \libraries\FileEdit();
             $this->fileArray = $fileEdit->addFile();
 
-            foreach($this->blockNeedle as $index => $value){
+            foreach($this->fileArray as $key => $value){
+                if(is_array($value)){
+                    $gallery = $this->object_model->get($table, ['fields' => [$key], 'where' => [$this->id_row => $id]])[0][$key];
+                    if($gallery){
+                        $this->fileArray[$key][] = $gallery;
+                    }
+                }else{
+                    $image = $this->object_model->get($table, [
+                        'fields' => [$key],
+                        'where' => [$this->id_row => $id]
+                    ])[0][$key];
+
+                    if($image){
+                        @unlink($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$image);
+                    }
+                }
+            }
+
+            /*foreach($this->blockNeedle as $index => $value){
                 if(strpos($index, 'img') !== false){
                     foreach($value as $item){
                         if(strpos($item, 'gallery') !== false){
                             if($this->fileArray{$item}){
-            //                foreach ($this->fileArray['gallery_img'] as $item) {
-            //                    $fileEdit->createThumbnail($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$item, array('cut' => '1230|750'));
-            //                }
                                 $gallery = $this->object_model->get($table, ['fields' => [$item], 'where' => [$this->id_row => $id]])[0][$item];
                                 if($gallery){
                                     $this->fileArray[$item][] = $gallery;
@@ -122,7 +137,7 @@ class EditController extends BaseAdmin{
                         }
                     }
                 }
-            }
+            }*/
 
             $res = $this->object_model->edit($table, ['files' => $this->fileArray, 'where' => [$this->id_row => $id]]);
             if($res){

@@ -15,7 +15,8 @@
                     <a href="<?=PATH.ADMIN_PATH?>/edit/<?=$table?>/<?=$item['id']?>" class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
                         <div class="vg-element vg-half vg-center">
                             <?php if($item['img']):?>
-                                <img src="<?=PATH.UPLOAD_DIR.$item['img']?>" alt="service">
+                                <?php $image = explode("|", $item['img'])[0]?>
+                                <img src="<?=PATH.UPLOAD_DIR.$image?>" alt="service">
                             <?php endif;?>
                         </div>
                         <div class="vg-element vg-half vg-center">

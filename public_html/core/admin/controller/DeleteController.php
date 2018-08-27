@@ -19,27 +19,18 @@ class DeleteController extends BaseAdmin{
 
                 if ($res) {
 
-                    foreach($this->blockNeedle as $index => $value){
+                    foreach($res as $index => $value){
                         if(strpos($index, 'img') !== false){
-                            foreach($value as $item){
-                                if(strpos($item, 'gallery') !== false){
-                                    if ($res[$item]) {
-                                        $gal_img = explode('|', $res[$item]);
-                                        foreach ($gal_img as $img) {
-                                            @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $img);
-                                        }
-                                    }
-                                }else{
-                                    if ($res[$item]) {
-                                        @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $res[$item]);
-                                    }
+                            if($value){
+                                $images = explode("|", $value);
+                                foreach($images as $item){
+                                    @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $item);
                                 }
                             }
                         }
                     }
 
                     if ($res['menu_pos']) {
-
                         if(array_key_exists('parent_id', $res)){
                             $pos = $this->object_model->get($table,
                                 ['fields' => ['COUNT(*) AS count'],

@@ -44,4 +44,10 @@ class Model extends \core\base\model\BaseModel{
 
         $this->inst_driver->update($query);
     }
+
+    public function ajaxSearch($fields, $table, $where){
+        $query = "SELECT $fields FROM $table $where";
+
+        return $this->inst_driver->select($query);
+    }
 }
