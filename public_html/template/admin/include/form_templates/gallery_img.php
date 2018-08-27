@@ -1,8 +1,11 @@
 <div class="vg-element vg-full vg-box-shadow">
     <div class="vg-wrap vg-element vg-full">
-        <div class="vg-element vg-full">
+        <div class="vg-wrap vg-element vg-full">
             <div class="vg-element vg-full vg-left">
                 <span class="vg-header"><?php echo $translate[$row][0] ? $translate[$row][0] : $row?></span>
+            </div>
+            <div class="vg-element vg-full vg-left">
+                <span class="vg-text vg-firm-color5">(не более 10 мб)</span><span class="vg_subheader"></span>
             </div>
         </div>
         <div class="vg-wrap vg-element vg-full gallery_container">
