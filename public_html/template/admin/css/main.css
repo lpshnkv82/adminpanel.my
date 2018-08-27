@@ -234,7 +234,8 @@ label.vg-element {
     .vg-search-reverse .search_links {
       top: 40px; } }
   .vg-search-reverse .search_links a {
-    display: block; }
+    display: block;
+    color: #2f3b4c; }
     .vg-search-reverse .search_links a:hover {
       background: #2f3b4c;
       color: #eceef2; }
