@@ -84,7 +84,11 @@ label.vg-element {
       flex-basis: 100%; } }
 
 .vg-fourth {
-  flex-basis: 24.3%; }
+  flex-basis: 24.3%;
+  max-height: 170px; }
+  .vg-fourth img {
+    max-width: 50%;
+    max-height: 100%; }
   @media (max-width: 768px) {
     .vg-fourth {
       flex-basis: 32.63333%; } }
@@ -235,7 +239,9 @@ label.vg-element {
       top: 40px; } }
   .vg-search-reverse .search_links a {
     display: block;
-    color: #2f3b4c; }
+    color: #2f3b4c;
+    text-align: left;
+    margin-left: 5px; }
     .vg-search-reverse .search_links a:hover {
       background: #2f3b4c;
       color: #eceef2; }

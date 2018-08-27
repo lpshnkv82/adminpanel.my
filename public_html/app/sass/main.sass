@@ -100,6 +100,11 @@ label.vg-element
             
 .vg-fourth
     flex-basis: $fourth-size
+    max-height: 170px
+    img
+        max-width: 50%
+        max-height: 100%
+
     @media (max-width: 768px)
         &
             flex-basis: $third-size
@@ -247,6 +252,8 @@ label.vg-element
         a
             display: block
             color: $color1
+            text-align: left
+            margin-left: 5px
             &:hover
                 background: $color1
                 color: $color3
