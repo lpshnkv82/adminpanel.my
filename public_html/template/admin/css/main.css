@@ -159,7 +159,7 @@ label.vg-element {
 .vg-header {
   font-size: 1.1vw;
   margin-bottom: 10px; }
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .vg-header {
       font-size: 14px; } }
 
@@ -174,9 +174,6 @@ label.vg-element {
   font-size: 1vw;
   text-decoration: none; }
   @media (max-width: 1200px) {
-    .vg-text {
-      font-size: 12px; } }
-  @media (max-width: 768px) {
     .vg-text {
       font-size: 12px; } }
 
