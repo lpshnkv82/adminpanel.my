@@ -98,7 +98,9 @@ label.vg-element {
 }
 
 @media (max-width: 768px) {
-    .vg-half, .vg-first, .vg-second {
+    .vg-half,
+    .vg-first,
+    .vg-second {
         flex-basis: 100%;
     }
 }
@@ -221,10 +223,7 @@ label.vg-element {
     margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
-  font-size: 1.1vw;
-  margin-bottom: 10px; }
-  @media (max-width: 1200px) {
+@media (max-width: 1200px) {
     .vg-header {
         font-size: 14px;
     }
@@ -252,13 +251,6 @@ label.vg-element {
     }
 }
 
-@media (max-width: 768px) {
-    .vg-text {
-        font-size: 12px;
-    }
-}
-      font-size: 12px; } }
-
 .vg-text2 {
     font-size: 1vw;
 }
@@ -285,12 +277,14 @@ label.vg-element {
     box-shadow: 0vw 2px 1px rgba(176, 190, 197, 0.5);
 }
 
-#hideButton, #searchButton {
+#hideButton,
+#searchButton {
     cursor: pointer;
     padding: 3.5% 0;
 }
 
-#hideButton:hover, #searchButton:hover {
+#hideButton:hover,
+#searchButton:hover {
     background-color: #eceef2;
 }
 
@@ -345,12 +339,7 @@ label.vg-element {
     margin-left: 5px;
 }
 
-/*.vg-search-reverse .search_links a:hover {
-    background: #2f3b4c;
-    color: #eceef2;
-}*/
-
-.vg-search-reverse .search_links a.search_act{
+.vg-search-reverse .search_links a.search_act {
     background: #2f3b4c;
     color: #eceef2;
 }
@@ -411,7 +400,9 @@ label.vg-element {
     border-left: 2px solid #00bfe8;
 }
 
+
 /*global*/
+
 .vg-no-space-top {
     padding-top: 0;
 }
@@ -420,7 +411,7 @@ textarea {
     height: 150px;
 }
 
-.vg-full > textarea {
+.vg-full>textarea {
     height: 200px;
 }
 
@@ -439,22 +430,23 @@ textarea {
     }
 }
 
-.vg-rows, .vg-img {
+.vg-rows,
+.vg-img {
     flex-basis: 49.3%;
 }
 
 @media (max-width: 768px) {
-    .vg-rows, .vg-img {
-        flex-basis: auto;
+    .vg-rows,
+    .vg-img {
+        flex-basis: 100%;
     }
 }
-      flex-basis: 100%; } }
 
 .vg-img {
     display: block;
 }
 
-.vg-img > div {
+.vg-img>div {
     height: 100%;
 }
 
@@ -476,7 +468,8 @@ textarea {
     padding: 10px;
 }
 
-.success, .error {
+.success,
+.error {
     position: fixed;
     z-index: 1;
     top: 13%;
