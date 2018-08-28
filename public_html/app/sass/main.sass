@@ -43,6 +43,7 @@ a
     padding: $offset
     font-size: 1.5vw
     cursor: pointer
+    outline: none
     &:hover
         color: $color1
         background-color: $color5
@@ -282,8 +283,9 @@ label.vg-element
     border-left: 2px solid $color2
 
 /*global*/
-.vg-no-space-top
-    padding-top: 0
+.vg-no-offset
+    padding: 0
+
 textarea
     height: 150px
 
@@ -338,3 +340,35 @@ textarea
 .error
     background: #ff8080
     color: $color3
+
+.select-wrapper 
+    position: relative
+    border: 1px solid $color1
+
+.select-wrapper:hover 
+    box-shadow: 0px 0px 3px gray
+
+.select-wrapper select 
+    background: rgba(0,0,0,0)
+    border: 0
+    z-index: 2
+    appearance: none
+    -webkit-appearance: none
+    -moz-appearance: none
+    &:hover
+        background-color: transparent 
+
+.select-wrapper select::-ms-expand
+    display: none
+
+.select-arrow-3 
+    position: absolute
+    z-index: 1
+    border: 8px solid transparent
+    border-bottom: 0
+    right: 6px
+
+.select-arrow-31
+    top: 45%
+    border-top-color: $color1
+

@@ -37,6 +37,7 @@ a {
     padding: 0.7%;
     font-size: 1.5vw;
     cursor: pointer;
+    outline: none;
 }
 
 .vg-input:hover {
@@ -391,8 +392,8 @@ label.vg-element {
 
 /*global*/
 
-.vg-no-space-top {
-    padding-top: 0;
+.vg-no-offset {
+    padding: 0;
 }
 
 textarea {
@@ -472,4 +473,43 @@ textarea {
 .error {
     background: #ff8080;
     color: #eceef2;
+}
+
+.select-wrapper {
+    position: relative;
+    border: 1px solid #2f3b4c;
+}
+
+.select-wrapper:hover {
+    box-shadow: 0px 0px 3px gray;
+}
+
+.select-wrapper select {
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    z-index: 2;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-wrapper select:hover {
+    background-color: transparent;
+}
+
+.select-wrapper select::-ms-expand {
+    display: none;
+}
+
+.select-arrow-3 {
+    position: absolute;
+    z-index: 1;
+    border: 8px solid transparent;
+    border-bottom: 0;
+    right: 6px;
+}
+
+.select-arrow-31 {
+    top: 45%;
+    border-top-color: #2f3b4c;
 }
