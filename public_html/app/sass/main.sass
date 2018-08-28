@@ -375,35 +375,33 @@ textarea
 
 .vg-fixed
     position: fixed
-    overflow-y: auto
-    height: auto
-    z-index: 3
-    @media (max-width: 400px)
-        height: 100%
-
-.no-zoom
     top: 0
     left: 0
     right: 0
+    @media (max-width: 400px)
+        bottom: 0
+    z-index: 3
+
+.no-zoom
     .vg-input
         @media (max-width: 500px)
             font-size: 1.5vw
     .vg-text
         @media (max-width: 500px)
-            font-size: 1.1vw
+            font-size: 1vw
         @media (max-width: 1200px)
-            font-size: 1.1vw
+            font-size: 1vw
     .vg-header
-        .vg-text
-        @media (max-width: 500px)
-            font-size: 1.1vw
         @media (max-width: 1200px)
             font-size: 1.1vw
 
 .modal_image
+    max-height: 91.5vh
+    max-width: 99.1vw
     overflow: auto
     img
+        margin: auto
         width: auto
-        height: auto
+        height: max-content
         max-width: none
         max-height: none

@@ -517,21 +517,16 @@ textarea {
 
 .vg-fixed {
     position: fixed;
-    overflow-y: auto;
-    height: auto;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 3;
 }
 
 @media (max-width: 400px) {
     .vg-fixed {
-        height: 100%;
+        bottom: 0;
     }
-}
-
-.no-zoom {
-    top: 0;
-    left: 0;
-    right: 0;
 }
 
 @media (max-width: 500px) {
@@ -542,19 +537,13 @@ textarea {
 
 @media (max-width: 500px) {
     .no-zoom .vg-text {
-        font-size: 1.1vw;
+        font-size: 1vw;
     }
 }
 
 @media (max-width: 1200px) {
     .no-zoom .vg-text {
-        font-size: 1.1vw;
-    }
-}
-
-@media (max-width: 500px) {
-    .no-zoom .vg-header {
-        font-size: 1.1vw;
+        font-size: 1vw;
     }
 }
 
@@ -565,12 +554,15 @@ textarea {
 }
 
 .modal_image {
+    max-height: 91.5vh;
+    max-width: 99.1vw;
     overflow: auto;
 }
 
 .modal_image img {
+    margin: auto;
     width: auto;
-    height: auto;
+    height: max-content;
     max-width: none;
     max-height: none;
 }
