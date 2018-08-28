@@ -41,74 +41,9 @@ class AjaxController extends BaseController{
     }
 
     protected function ajaxSearch(){
-        $temp_tables = $this->object_model->showTables();
+
         $data = $this->clearStr($_POST['data']);
-        $result = [];
-
-        foreach($temp_tables as $item){
-            $table = reset($item);
-            if(!in_array($table, EXCEPTION_TABLES)){
-
-                $res = $this->object_model->showColumns($table);
-
-                $id_row = '';
-                $fields = '';
-                $where = '';
-                foreach($res as $col){
-                    $columns[] = $col['Field'];
-
-                    if($col['Key'] == 'PRI') $id_row = $col['Field'];
-
-                    if(mb_strpos($col['Field'], 'name') !== false){
-                        $fields .= $col['Field'] . ' as name,';
-
-                        if(!$where){
-                            $where .= "WHERE {$col['Field']} LIKE '%$data%'";
-                        }else{
-                            $where .= " OR {$col['Field']} LIKE '%$data%'";
-                        }
-                    }
-
-                    if(mb_strpos($col['Field'], 'content') !== false){
-                        if(!$where){
-                            $where .= "WHERE {$col['Field']} LIKE '%$data%'";
-                        }else{
-                            $where .= " OR {$col['Field']} LIKE '%$data%'";
-                        }
-                    }
-
-                    if(mb_strpos($col['Field'], 'description') !== false){
-                        if(!$where){
-                            $where .= "WHERE {$col['Field']} LIKE '%$data%'";
-                        }else{
-                            $where .= " OR {$col['Field']} LIKE '%$data%'";
-                        }
-                    }
-
-                }
-
-                if($fields){
-                    $fields = $id_row . ' as id,' .rtrim($fields, ',');
-                    $result[$table] = $this->admin_model->ajaxSearch($fields, $table, $where);
-                }
-            }
-        }
-        if($result){
-            $res_arr = [];
-            foreach ($result as $index => $item) {
-                if(!$item){
-                    unset($result[$index]);
-                    continue;
-                }
-                foreach ($item as $key => $value){
-                    $result[$index][$key]['link'] = PATH.ADMIN_PATH.'/edit/'.$index.'/'.$value['id'];
-                    $res_arr[] = $result[$index][$key];
-                }
-            }
-            return $res_arr;
-        }
-
-        return;
+        return $this->admin_model->adminSearch($data);
     }
 
     protected function sortGalleryImg(){

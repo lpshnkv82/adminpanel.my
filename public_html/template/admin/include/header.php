@@ -28,12 +28,14 @@
                         <img src="<?=PATH.ADMIN_TEMPLATE?>img/menu-button.png" alt="">
                     </div>
                 </div>
-                <div class="vg-element vg-wrap-size vg-center vg-search  vg-relative" id="searchButton">
+                <div class="vg-element vg-wrap-size vg-left vg-search  vg-relative" id="searchButton">
                     <div>
                         <img src="<?=PATH.ADMIN_TEMPLATE?>img/search.png" alt="">
                     </div>
-                    <input type="text" name="search" class="vg-input vg-text">
-                    <div class="vg-element vg-firm-background-color4 vg-box-shadow search_links search_res"></div>
+                    <form method="post" action="<?=PATH.ADMIN_PATH?>/search" autocomplete="off">
+                        <input type="text" name="search" class="vg-input vg-text">
+                        <div class="vg-element vg-firm-background-color4 vg-box-shadow search_links search_res"></div>
+                    </form>
                 </div>
             </div>
             <div class="vg-element vg-fifth">

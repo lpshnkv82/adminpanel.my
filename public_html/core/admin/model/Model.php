@@ -45,9 +45,84 @@ class Model extends \core\base\model\BaseModel{
         $this->inst_driver->update($query);
     }
 
-    public function ajaxSearch($fields, $table, $where){
-        $query = "SELECT $fields FROM $table $where";
+    public function adminSearch($data){
 
-        return $this->inst_driver->select($query);
+        $result = [];
+        $temp_tables = $this->showTables();
+
+        foreach($temp_tables as $item){
+            $table = reset($item);
+            if(!in_array($table, EXCEPTION_TABLES)){
+
+                $res = $this->showColumns($table);
+
+                $id_row = '';
+                $fields = '';
+                $where = '';
+                $img = false;
+
+                foreach($res as $col){
+                    $columns[] = $col['Field'];
+
+                    if($col['Key'] == 'PRI') $id_row = $col['Field'];
+
+                    if(!$img){
+                        if(mb_strpos($col['Field'], 'img') !== false){
+                            $fields .= $col['Field'] . ' as img,';
+                            $img = true;
+                        }
+                    }
+
+                    if(mb_strpos($col['Field'], 'name') !== false){
+                        $fields .= $col['Field'] . ' as name,';
+
+                        if(!$where){
+                            $where .= "WHERE {$col['Field']} LIKE '%$data%'";
+                        }else{
+                            $where .= " OR {$col['Field']} LIKE '%$data%'";
+                        }
+                    }
+
+                    if(mb_strpos($col['Field'], 'content') !== false){
+                        if(!$where){
+                            $where .= "WHERE {$col['Field']} LIKE '%$data%'";
+                        }else{
+                            $where .= " OR {$col['Field']} LIKE '%$data%'";
+                        }
+                    }
+
+                    if(mb_strpos($col['Field'], 'description') !== false){
+                        if(!$where){
+                            $where .= "WHERE {$col['Field']} LIKE '%$data%'";
+                        }else{
+                            $where .= " OR {$col['Field']} LIKE '%$data%'";
+                        }
+                    }
+
+                }
+
+                if($fields){
+                    $fields = $id_row . ' as id,' .rtrim($fields, ',');
+                    $query = "SELECT $fields FROM $table $where";
+                    $result[$table] = $this->inst_driver->select($query);
+                }
+            }
+        }
+        if($result){
+            $res_arr = [];
+            foreach ($result as $index => $item) {
+                if(!$item){
+                    unset($result[$index]);
+                    continue;
+                }
+                foreach ($item as $key => $value){
+                    $result[$index][$key]['link'] = PATH.ADMIN_PATH.'/edit/'.$index.'/'.$value['id'];
+                    $res_arr[] = $result[$index][$key];
+                }
+            }
+            shuffle($res_arr);
+            return $res_arr;
+        }
+        return;
     }
 }
