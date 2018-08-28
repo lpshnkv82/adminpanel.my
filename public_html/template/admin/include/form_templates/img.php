@@ -28,7 +28,7 @@
                 <span class="vg-header">Отредактированное изображение</span>
             </div>
         </div>
-        <div class="vg-wrap vg-element vg-full offset-bottom">
+        <div class="vg-wrap vg-element vg-full offset-top">
                 <div class="vg-element vg-left img_show">
                     <?php if($data[$row]):?>
                         <img src="<?=PATH.UPLOAD_DIR.$data[$row]?>" alt="service">
