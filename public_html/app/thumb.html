@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
-<div class="modal_image_wrap">
-    <div class="modal_image">
-        <!--IMG-->
-    </div>
-    <div class="img_settings">
-        <button id="release">Убрать выделение</button>
-        <button id="crop">Обрезать</button>
-        <div class="optlist offset">
-            <!--<label><input type="checkbox" id="ar_lock" />Соблюдать пропорции (4:3)</label>
+    <div class="modal_image_wrap">
+        <div class="modal_image">
+            <img src="./img/portfolio1.png" alt="modal" />
+        </div>
+        <div class="img_settings">
+            <button id="release">Убрать выделение</button>
+            <button id="crop">Обрезать</button>
+            <div class="optlist offset">
+                <!--<label><input type="checkbox" id="ar_lock" />Соблюдать пропорции (4:3)</label>
             <label><input type="checkbox" id="size_lock" />min/max размер (80x80/350x350)</label>-->
+            </div>
+            <div class="inline-labels">
+                <label>X1 <input type="text" size="4" id="x1" name="x1" /></label>
+                <label>Y1 <input type="text" size="4" id="y1" name="y1" /></label>
+                <label>X2 <input type="text" size="4" id="x2" name="x2" /></label>
+                <label>Y2 <input type="text" size="4" id="y2" name="y2" /></label>
+                <label>W <input type="text" size="4" id="w" name="w" /></label>
+                <label>H <input type="text" size="4" id="h" name="h" /></label>
+            </div>
+            <p>Результаты:</p>
+            <div id="cropresult"></div>
         </div>
-        <div  class="inline-labels">
-            <label>X1 <input type="text" size="4" id="x1" name="x1" /></label>
-            <label>Y1 <input type="text" size="4" id="y1" name="y1" /></label>
-            <label>X2 <input type="text" size="4" id="x2" name="x2" /></label>
-            <label>Y2 <input type="text" size="4" id="y2" name="y2" /></label>
-            <label>W <input type="text" size="4" id="w" name="w" /></label>
-            <label>H <input type="text" size="4" id="h" name="h" /></label>
-        </div>
-        <p>Результаты:</p>
-        <div  id="cropresult"></div>
     </div>
-</div>
 </body>
+
 </html>

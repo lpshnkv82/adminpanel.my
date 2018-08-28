@@ -31,7 +31,7 @@ a {
 }
 
 .vg-input {
-    border: 1px solid #2f3b4c;
+    border: 0.1vw solid #2f3b4c;
     flex-basis: 100%;
     box-sizing: border-box;
     padding: 0.7%;
@@ -394,6 +394,7 @@ label.vg-element {
 
 .vg-no-offset {
     padding: 0;
+    margin: 0;
 }
 
 textarea {
@@ -512,4 +513,64 @@ textarea {
 .select-arrow-31 {
     top: 45%;
     border-top-color: #2f3b4c;
+}
+
+.vg-fixed {
+    position: fixed;
+    overflow-y: auto;
+    height: auto;
+    z-index: 3;
+}
+
+@media (max-width: 400px) {
+    .vg-fixed {
+        height: 100%;
+    }
+}
+
+.no-zoom {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+@media (max-width: 500px) {
+    .no-zoom .vg-input {
+        font-size: 1.5vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .no-zoom .vg-text {
+        font-size: 1.1vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .no-zoom .vg-text {
+        font-size: 1.1vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .no-zoom .vg-header {
+        font-size: 1.1vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .no-zoom .vg-header {
+        font-size: 1.1vw;
+    }
+}
+
+.modal_image {
+    overflow: auto;
+}
+
+.modal_image img {
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
 }
