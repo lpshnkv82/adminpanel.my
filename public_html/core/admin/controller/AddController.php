@@ -9,6 +9,11 @@ class AddController extends BaseAdmin{
 
         if($this->isPost()){
             $this->clearPostFields($_POST);
+
+            if(array_key_exists('menu_pos', $_POST)){
+                $this->object_model->updateMenuPosition($_POST['table'], 'menu_pos', false, $_POST['menu_pos']);
+            }
+
             $this->editData();
         }
 
@@ -16,15 +21,15 @@ class AddController extends BaseAdmin{
         $res = $this->object_model->showColumns($this->table);
 
         if($res){
-             $this->createOutputData($res);
+             $res_arr = $this->createOutputData($res);
         }
 
-        if(in_array('menu_pos', $this->columns)){
+        if($res_arr['menu_pos']){
             $this->menu_pos = $this->object_model->get($this->table,
                 ['fields' => ['COUNT(*) AS count']
                 ])[0]['count'] + 1;
         }
-
+        return;
     }
 
     protected function outputData(){
@@ -34,7 +39,8 @@ class AddController extends BaseAdmin{
                                                 'table' => $this->table,
                                                 'columns' => $this->columns,
                                                 'templateArr' => $this->templateArr,
-                                                'translate' => $this->translate
+                                                'translate' => $this->translate,
+                                                'menu_pos' => $this->menu_pos
                                                 ));
 
         $this->page = parent::outputData();

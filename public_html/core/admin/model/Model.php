@@ -17,20 +17,25 @@ class Model extends \core\base\model\BaseModel{
 
     public function updateMenuPosition($table, $row, $where, $end_pos, $update_rows = false){
 
-        $start_pos = $this->get($table, ['fields' => [$row],
-            'where' => $where
-        ])[0][$row];
+        if($where){
+            $start_pos = $this->get($table, ['fields' => [$row],
+                'where' => $where
+            ])[0][$row];
 
-        if($update_rows){
-            $update_rows['operand'] = !empty($update_rows['operand']) ? $update_rows['operand'] : ['='];
-            $where_arr = $this->get($table, [
-                                            'fields' => $update_rows['where'],
-                                            'where' => $where
-            ])[0];
+            if($update_rows){
+                $update_rows['operand'] = !empty($update_rows['operand']) ? $update_rows['operand'] : ['='];
+                $where_arr = $this->get($table, [
+                    'fields' => $update_rows['where'],
+                    'where' => $where
+                ])[0];
 
-            if($where_arr)
-
-            $db_where = $this->createWhere(['where' => $where_arr, 'operand' => $update_rows['operand']]);
+                if($where_arr)
+                    $db_where = $this->createWhere(['where' => $where_arr, 'operand' => $update_rows['operand']]);
+            }
+        }else{
+            $start_pos = $this->get($table, [
+                    'fields' => ['COUNT(*) AS count']
+                ])[0]['count'] + 1;
         }
 
         $db_where = $db_where ? $db_where . 'AND ' : 'WHERE';

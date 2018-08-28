@@ -25,7 +25,8 @@ class Settings
         'description' => ['Метаописание', 'Максимум 160 символов'],
         'content' => ['Описание'],
         'short_content' => ['Краткое описание'],
-        'visible' => ['Показать на сайте']
+        'visible' => ['Показать на сайте'],
+        'menu_pos' => ['Позиция в меню']
     ];
 
     private $templateArr = [
@@ -33,7 +34,8 @@ class Settings
         'textarea' => ['keywords', 'description', 'content', 'short_content'],
         'radio' => ['visible'],
         'img' => ['img'],
-        'gallery_img' => ['gallery_img', 'test_gallery_img']
+        'gallery_img' => ['gallery_img', 'test_gallery_img'],
+        'select' => ['menu_pos']
     ];
 
     private $blockNeedle = [
