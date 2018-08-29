@@ -385,6 +385,14 @@ label.vg-element {
     }
 }
 
+.vg-hide .vg-menu a:hover {
+    width: 15vw;
+}
+
+.vg-hide .vg-menu a:hover .vg_hidden {
+    display: flex;
+}
+
 .active {
     border-left: 2px solid #00bfe8;
 }
