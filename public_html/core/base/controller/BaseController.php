@@ -11,8 +11,8 @@ abstract class BaseController
     protected $user_name;
     protected $user_id;
 
-    protected $styles, $styles_admin;
-    protected $scripts, $scripts_admin;
+    protected $style;
+    protected $script;
 
     protected $page;
     protected $errors;
@@ -46,29 +46,32 @@ abstract class BaseController
         }
     }
 
-    public function init()
+    protected function init($admin = false)
     {
+        if(!$admin){
+            if (!empty(USER_CSS_JS['styles'])) {
+                foreach (USER_CSS_JS['styles'] as $style) {
+                    $this->style[] = PATH.TEMPLATE.trim($style, '/');
+                }
+            }
+            if (!empty(USER_CSS_JS['scripts'])) {
+                foreach (USER_CSS_JS['scripts'] as $script) {
+                    $this->script[] = PATH.TEMPLATE.trim($script, '/');
+                }
+            }
+        }else{
+            if (!empty(ADMIN_CSS_JS['styles'])) {
+                foreach (ADMIN_CSS_JS['styles'] as $style) {
+                    $this->style[] = PATH.ADMIN_TEMPLATE.trim($style, '/');
+                }
+            }
+            if (!empty(ADMIN_CSS_JS['scripts'])) {
+                foreach (ADMIN_CSS_JS['scripts'] as $script) {
+                    $this->script[] = PATH.ADMIN_TEMPLATE.trim($script, '/');
+                }
+            }
+        }
 
-        if (!empty(SCRIPTS_STYLES['styles'])) {
-            foreach (SCRIPTS_STYLES['styles'] as $style) {
-                $this->styles[] = trim($style, '/');
-            }
-        }
-        if (!empty(SCRIPTS_STYLES['styles_admin'])) {
-            foreach (SCRIPTS_STYLES['styles_admin'] as $style) {
-                $this->styles_admin[] = trim($style, '/');
-            }
-        }
-        if (!empty(SCRIPTS_STYLES['scripts'])) {
-            foreach (SCRIPTS_STYLES['scripts'] as $script) {
-                $this->scripts[] = trim($script, '/');
-            }
-        }
-        if (!empty(SCRIPTS_STYLES['scripts_admin'])) {
-            foreach (SCRIPTS_STYLES['scripts_admin'] as $script) {
-                $this->scripts_admin[] = trim($script, '/');
-            }
-        }
     }
 
     protected function getController()
@@ -93,7 +96,6 @@ abstract class BaseController
 
     public function request($parameters = array())
     {
-        $this->init();
         $this->inputData($parameters);
         $this->page = $this->outputData();
 
@@ -104,7 +106,7 @@ abstract class BaseController
         $this->getPage();
     }
 
-    public function getPage()
+    protected function getPage()
     {
         echo $this->page;
     }
@@ -120,7 +122,7 @@ abstract class BaseController
         return ob_get_clean();
     }
 
-    public function clearStr($var){
+    protected function clearStr($var){
 
         if (is_array($var)) {
             $row = array();
@@ -133,25 +135,25 @@ abstract class BaseController
         }
     }
 
-    public function clearInt($var){
+    protected function clearInt($var){
         return (int)$var;
     }
 
-    public function isPost(){
+    protected function isPost(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             return true;
         }
         return false;
     }
 
-    public function redirect($http = false){
+    protected function redirect($http = false){
         if($http) $redirect = $http;
         else $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
         header("Location: $redirect");
         exit;
     }
 
-    public function checkAuth(){
+    protected function checkAuth(){
         try{
             $cookie = ModelUser::getInstance();
             $cookie->checkIdUser();
@@ -168,7 +170,7 @@ abstract class BaseController
         }
     }
 
-    public function writeError($error, $file = 'log.txt', $event = 'Fault'){
+    protected function writeError($error, $file = 'log.txt', $event = 'Fault'){
         $time = date('d-m-Y G:i:s');
 
         $str = $event.': '.$time.' - '.$error."\r\n";

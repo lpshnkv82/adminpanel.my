@@ -1,12 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: den
- * Date: 23.08.2018
- * Time: 15:00
- */
-
-namespace core\base\controller;
+namespace core\base\settings;
 
 
 class Settings

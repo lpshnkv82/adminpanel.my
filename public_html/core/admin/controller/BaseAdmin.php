@@ -8,8 +8,6 @@ class BaseAdmin extends \core\base\controller\BaseController{
     protected $object_model;
     protected $object_model_user;
     protected $title;
-    protected $style;
-    protected $script;
     protected $content;
     protected $user = true;
     protected $user_access = true;
@@ -42,7 +40,9 @@ class BaseAdmin extends \core\base\controller\BaseController{
             }
         }
 
-        $this->Settings = new \core\base\controller\Settings();
+        $this->init(true);
+
+        $this->Settings = new \core\base\settings\Settings();
 
         $this->leftMenu = $this->Settings->getLeftMenu();
         $this->translate = $this->Settings->getTranslate();
@@ -51,13 +51,7 @@ class BaseAdmin extends \core\base\controller\BaseController{
         $this->exceptionTables = $this->Settings->getExceptionTables();
 
         $this->title = 'VG engine';
-        
-        foreach($this->styles_admin as $style){
-            $this->style[] = PATH.ADMIN_TEMPLATE.$style;
-        }
-        foreach($this->scripts_admin as $script){
-            $this->script[] = PATH.ADMIN_TEMPLATE.$script;
-        }
+
 
         $this->object_model = Model::getInstance();
         $this->object_model_user = ModelUser::getInstance();
@@ -75,9 +69,7 @@ class BaseAdmin extends \core\base\controller\BaseController{
             }
         }
 
-
         $this->sendNoCacheHeaders();
-
     }
 
     protected function outputData(){

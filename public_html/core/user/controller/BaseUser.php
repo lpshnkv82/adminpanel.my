@@ -7,8 +7,6 @@ use core\user\model\Model;
      protected $title; //Title страницы
      protected $keywords; //Ключевики страницы
      protected $description; //Description страницы
-     protected $style; //Полный путь к стилям сайта
-     protected $script; //Полный путь к сскриптам сайта
      protected $header; //Хранение шаблона HEADER
      protected $sidebar; //Хранение сайдбара
      protected $content; //Хранение динамического контента сайта
@@ -19,45 +17,58 @@ use core\user\model\Model;
      protected $pageItem;
      private $menu_class;
      protected $set;
+     protected $main_class = 'inner_page';
      protected $template;
+     protected $contactsPage = false;
 
      protected function inputData(){
-        //$this->title = MAIN_TITLE;
 
-         foreach ($this->styles as $style){
-             $this->style[] = PATH.TEMPLATE.$style;
-         }
-
-         foreach ($this->scripts as $script){
-             $this->script[] = PATH.TEMPLATE.$script;
-         }
+         $this->init();
 
          $this->object_model = Model::getInstance();
 
          $this->addActiveMenu();
 
-         $this->set = $this->object_model->get('settings')[0];
+         $this->set = $this->object_model->get('settings', ['limit' => '1'])[0];
+
+         $this->set['short_name'] = substr($this->set['name'], 0, 1) . substr($this->set['name'], -1, 1);
 
          if($this->set['phone']){
              $this->set['phone'] = explode(",", $this->set['phone']);
+         }
+
+         if($this->set['success_phrase']){
+             $phrase_arr = explode("\r\n", $this->set['success_phrase']);
+             $this->set['success_phrase'] = $phrase_arr[mt_rand(0, count($phrase_arr) - 1)];
          }
      }
 
      protected function outputData(){
 
-         if(!$this->display_flag){
-             $this->header = $this->render(TEMPLATE.'include/header', array(
-                 'styles' => $this->style,
-                 'title' => $this->title,
-                 'keywords' => $this->keywords,
-                 'description' => $this->description,
-                 'set' => $this->set,
-                 'menu_class' => $this->menu_class
-             ));
+         $this->header = $this->render(TEMPLATE.'include/header', array(
+             'styles' => $this->style,
+             'title' => $this->title,
+             'keywords' => $this->keywords,
+             'description' => $this->description,
+             'menu_class' => $this->menu_class,
+             'set' => $this->set,
+             'main_class' => $this->main_class
+         ));
 
+         if(!$this->display_flag){
              $this->footer = $this->render(TEMPLATE.'include/footer', array(
+                 'display_flag' => $this->display_flag,
                  'scripts' => $this->script,
                  'set' => $this->set,
+                 'contactsPage' => $this->contactsPage
+             ));
+         }else{
+             $this->footer = $this->render(TEMPLATE.'include/footer', array(
+                 'display_flag' => $this->display_flag,
+                 'scripts' => $this->script,
+                 'set' => $this->set,
+                 'pages' => $this->pageItem,
+                 'contactsPage' => $this->contactsPage
              ));
          }
 

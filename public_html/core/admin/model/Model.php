@@ -93,10 +93,12 @@ class Model extends \core\base\model\BaseModel{
 
         $result = [];
         $temp_tables = $this->showTables();
+        $set = new \core\base\settings\Settings();
+        $exceptT = $set->getExceptionTables();
 
         foreach($temp_tables as $item){
             $table = reset($item);
-            if(!in_array($table, EXCEPTION_TABLES)){
+            if(!in_array($table, $exceptT)){
 
                 $res = $this->showColumns($table);
 
