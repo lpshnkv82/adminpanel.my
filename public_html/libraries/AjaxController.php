@@ -29,6 +29,12 @@ class AjaxController extends BaseController{
             case 'search':
                 exit(json_encode($this->ajaxSearch()));
                 break;
+
+            case 'change_parent':
+                $this->ajaxData = json_decode($_POST['data'], true);
+                exit(json_encode($this->changeParent()));
+                break;
+
             case 'send_mail':
                 exit(json_encode($this->sendMail()));
                 break;
@@ -38,6 +44,13 @@ class AjaxController extends BaseController{
                 exit($this->createJsThumbnail());
                 break;
         }
+    }
+
+    protected function changeParent(){
+        return $this->admin_model->get($this->ajaxData['table'], [
+                'fields' => ['COUNT(*) AS count'],
+                'where' => ['parent_id' => $this->ajaxData['parent_id']]
+            ])[0]['count'] + 1;
     }
 
     protected function ajaxSearch(){

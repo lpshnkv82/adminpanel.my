@@ -5,7 +5,7 @@
                 <span class="vg-header"><?php echo $translate[$row][0] ? $translate[$row][0] : $row?></span>
             </div>
             <div class="vg-element vg-full vg-left">
-                <span class="vg-text vg-firm-color5">(не более 70 символов)</span><span class="vg_subheader"></span>
+                <span class="vg-text vg-firm-color5"><?=$translate[$row][1]?></span><span class="vg_subheader"></span>
             </div>
         </div>
         <div class="vg-element vg-full">

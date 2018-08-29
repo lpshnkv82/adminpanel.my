@@ -13,7 +13,8 @@ class Settings
 {
 
     private $leftMenu = [
-        'pages' => ['name' => 'Страницы', 'img' => 'pages.png']
+        'pages' => ['name' => 'Страницы', 'img' => 'pages.png'],
+        'portfolio' => ['name' => 'Портфолио', 'img' => 'pages.png']
     ];
 
     private $translate = [
@@ -26,16 +27,26 @@ class Settings
         'content' => ['Описание'],
         'short_content' => ['Краткое описание'],
         'visible' => ['Показать на сайте'],
-        'menu_pos' => ['Позиция в меню']
+        'menu_pos' => ['Позиция в меню'],
+        'parent_id' => ['Родительская категория'],
+        /*Шаблон настроек сайта*/
+        'phone' => ['Телефон', 'Введите номера телефонов через запятую'],
+        'email' => ['E-mail'],
+        'adress' => ['Адрес компании'],
+        'sidebar_header' => ['Заголовок правого сайдбара'],
+        'type' => ['Тип компании'],
+        'success_phrase' => ['Промо высказывания']
+        /*Шаблон настроек сайта*/
     ];
 
     private $templateArr = [
-        'text' => ['name', 'price'],
-        'textarea' => ['keywords', 'description', 'content', 'short_content'],
+        'text' => ['name', 'price', 'type', 'sidebar_header', 'phone', 'email', 'adress'],
+        'textarea' => ['keywords', 'description', 'content', 'short_content', 'success_phrase'],
         'radio' => ['visible'],
         'img' => ['img'],
-        'gallery_img' => ['gallery_img', 'test_gallery_img'],
-        'select' => ['menu_pos']
+        'gallery_img' => ['gallery_img'],
+        'select' => ['menu_pos'],
+        'select_parents' => ['parent_id']
     ];
 
     private $blockNeedle = [
@@ -55,6 +66,8 @@ class Settings
         'url' => 'https://translate.yandex.net/api/v1.5/tr/translate',
         'key' => 'key=trnsl.1.1.20180821T133645Z.4f02615523209aec.3439cd97dcbfd60dff85a9f4dfdcf5059b501011'
     ];
+
+    private $exceptionTables = ['users', 'users_types', 'fealtures'];
 
 
     public function getLeftMenu(){
@@ -79,6 +92,10 @@ class Settings
 
     public function getYandexTranslateParameters(){
         return $this->yandexTranslate;
+    }
+
+    public function getExceptionTables(){
+        return $this->exceptionTables;
     }
 
 }

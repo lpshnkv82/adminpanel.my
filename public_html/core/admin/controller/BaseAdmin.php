@@ -22,11 +22,13 @@ class BaseAdmin extends \core\base\controller\BaseController{
     protected $columns;
     protected $menu_pos;
     protected $main_pages;
+    protected $parents;
 
     protected $leftMenu;
     protected $translate;
     protected $templateArr;
     protected $blockNeedle;
+    protected $exceptionTables;
 
     protected $Settings;
 
@@ -46,6 +48,7 @@ class BaseAdmin extends \core\base\controller\BaseController{
         $this->translate = $this->Settings->getTranslate();
         $this->templateArr = $this->Settings->getTemplateArr();
         $this->blockNeedle = $this->Settings->getBlockNeedle();
+        $this->exceptionTables = $this->Settings->getExceptionTables();
 
         $this->title = 'VG engine';
         
@@ -63,7 +66,11 @@ class BaseAdmin extends \core\base\controller\BaseController{
 
         foreach($tables as $item){
             $value = reset($item);
-            if(!in_array($value, EXCEPTION_TABLES)){
+            if($this->exceptionTables){
+                if(!in_array($value, $this->exceptionTables)){
+                    $this->tables[] = $value;
+                }
+            }else{
                 $this->tables[] = $value;
             }
         }
@@ -150,19 +157,21 @@ class BaseAdmin extends \core\base\controller\BaseController{
                     }
                 }
 
-                if(array_key_exists($key, $validate)){
-                    if($this->translate[$key]){
-                        $answer = $this->translate[$key][0];
-                    }else{
-                        $answer = $key;
-                    }
+                if($validate){
+                    if(array_key_exists($key, $validate)){
+                        if($this->translate[$key]){
+                            $answer = $this->translate[$key][0];
+                        }else{
+                            $answer = $key;
+                        }
 
-                    if($validate[$key]['empty']){
-                        $this->emptyFields($value, 'Не заполнено '.$answer);
-                    }
+                        if($validate[$key]['empty']){
+                            $this->emptyFields($value, 'Не заполнено '.$answer);
+                        }
 
-                    if($validate[$key]['count']){
-                        $this->countChar($value,  $validate[$key]['count'],'лина поля ' . $answer . ' превышает ' . $validate[$key]['count'] . 'символов');
+                        if($validate[$key]['count']){
+                            $this->countChar($value,  $validate[$key]['count'],'лина поля ' . $answer . ' превышает ' . $validate[$key]['count'] . 'символов');
+                        }
                     }
                 }
             }
@@ -174,7 +183,9 @@ class BaseAdmin extends \core\base\controller\BaseController{
 
         $res_arr = [
             'id_row' => false,
-            'menu_pos' => false
+            'name_row' => false,
+            'menu_pos' => false,
+            'parent_id' => false
         ];
         $temp_arr = [];
         foreach($res as $col){
@@ -204,8 +215,15 @@ class BaseAdmin extends \core\base\controller\BaseController{
                 //$this->translate[$col['Field']][0] = $this->yaTranslate($col['Field'], true);
             }
 
-            if($col['Key'] == 'PRI') $res_arr['id_row'] = $col['Field'];
-            if($col['Field'] == 'menu_pos') $res_arr['menu_pos'] = true;
+            if(is_array($res_arr)){
+                if($col['Key'] == 'PRI'){
+                    if(!$res_arr['id_row']) $res_arr['id_row'] = $col['Field'];
+                }
+                if(!$res_arr['name_row']){
+                    if(strpos($col['Field'], 'name') !== false) $res_arr['name_row'] = $col['Field'];
+                }
+                if(in_array($col['Field'], $res_arr)) $res_arr[$col['Field']] = true;
+            }
         }
 
         foreach ($this->blockNeedle as $index => $item) {

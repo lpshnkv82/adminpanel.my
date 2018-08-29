@@ -5,7 +5,7 @@
                 <span class="vg-header"><?php echo $translate[$row][0] ? $translate[$row][0] : $row?></span>
             </div>
             <div class="vg-element vg-full vg-left">
-                <span class="vg-text vg-firm-color5">(не более 10 мб)</span><span class="vg_subheader"></span>
+                <span class="vg-text vg-firm-color5"><?=$translate[$row][1]?></span><span class="vg_subheader"></span>
             </div>
         </div>
         <div class="vg-wrap vg-element vg-full gallery_container">
@@ -22,14 +22,14 @@
                     <?php endforeach;?>
                     <?php
                         for ($i = 0; $i < 2; $i++){
-                            echo '<div class="vg-dotted-square empty_container"></div>';
+                            echo '<div class="vg-dotted-square vg-center empty_container"></div>';
                         }
                     ?>
 
                 <?php else:?>
                     <?php
                         for ($i = 0; $i < 13; $i++){
-                            echo '<div class="vg-dotted-square empty_container"></div>';
+                            echo '<div class="vg-dotted-square vg-center empty_container"></div>';
                         }
                     ?>
                 <?php endif;?>

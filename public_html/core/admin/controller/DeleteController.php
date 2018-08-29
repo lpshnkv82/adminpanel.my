@@ -36,7 +36,7 @@ class DeleteController extends BaseAdmin{
                                 ['fields' => ['COUNT(*) AS count'],
                                     'where' => ['parent_id' => $res['parent_id']]
                                 ])[0]['count'];
-                            $this->object_model->updateMenuPosition($table, 'menu_pos', [$id_row => $id], $pos, ['where' => ['parent_id']]);
+                            $this->object_model->updateMenuPosition($table, 'menu_pos', [$id_row => $id], $pos, ['where' => 'parent_id']);
                         }else{
                             $pos = $this->object_model->get($table,
                                 ['fields' => ['COUNT(*) AS count']

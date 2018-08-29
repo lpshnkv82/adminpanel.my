@@ -25,17 +25,56 @@ class Model extends \core\base\model\BaseModel{
             if($update_rows){
                 $update_rows['operand'] = !empty($update_rows['operand']) ? $update_rows['operand'] : ['='];
                 $where_arr = $this->get($table, [
-                    'fields' => $update_rows['where'],
+                    'fields' => [$update_rows['where']],
                     'where' => $where
                 ])[0];
 
-                if($where_arr)
-                    $db_where = $this->createWhere(['where' => $where_arr, 'operand' => $update_rows['operand']]);
+                if($where_arr) {
+                    if(array_key_exists($update_rows['where'], $_POST)){
+                        if($_POST[$update_rows['where']] != $where_arr[$update_rows['where']]){
+                            $update_where = $this->createWhere([
+                                'where' => [$update_rows['where'] => $where_arr[$update_rows['where']]],
+                                'operand' => $update_rows['operand']
+                                ]);
+
+                            if($update_where){
+                                $pos = $this->get($table,
+                                    ['fields' => ['COUNT(*) AS count'],
+                                        'where' => [$update_rows['where'] => $where_arr[$update_rows['where']]]
+                                    ])[0]['count'];
+                            }
+
+                            $update_where = $update_where ? $update_where . 'AND ' : 'WHERE';
+                            $query = "UPDATE $table SET $row = $row - 1 $update_where $row <= $pos AND $row > $start_pos";
+                            $this->inst_driver->update($query);
+
+                            $db_where = $this->createWhere(['where' => [$update_rows['where'] => $_POST[$update_rows['where']]], 'operand' => $update_rows['operand']]);
+
+                            $start_pos = $this->get($table, [
+                                'fields' => ['COUNT(*) AS count'],
+                                'where' => [$update_rows['where'] => $_POST[$update_rows['where']]]
+                                ])[0]['count'] + 1;
+                        }
+                    }else{
+                        $db_where = $this->createWhere(['where' => $where_arr, 'operand' => $update_rows['operand']]);
+                    }
+
+                }
             }
         }else{
-            $start_pos = $this->get($table, [
-                    'fields' => ['COUNT(*) AS count']
-                ])[0]['count'] + 1;
+            if(array_key_exists($update_rows['where'], $_POST)){
+                $start_pos = $this->get($table, [
+                        'fields' => ['COUNT(*) AS count'],
+                        'where' => [$update_rows['where'] => $_POST[$update_rows['where']]]
+                    ])[0]['count'] + 1;
+                $update_rows['operand'] = !empty($update_rows['operand']) ? $update_rows['operand'] : ['='];
+                $db_where = $this->createWhere(['where' => [$update_rows['where'] => $_POST[$update_rows['where']]], 'operand' => $update_rows['operand']]);
+
+            }else{
+                $start_pos = $this->get($table, [
+                        'fields' => ['COUNT(*) AS count']
+                    ])[0]['count'] + 1;
+            }
         }
 
         $db_where = $db_where ? $db_where . 'AND ' : 'WHERE';

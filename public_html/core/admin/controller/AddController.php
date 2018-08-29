@@ -3,6 +3,7 @@ namespace core\admin\controller;
 
 class AddController extends BaseAdmin{
 
+    protected $resArr;
     protected function inputData($parameters){
 
         parent::inputData();
@@ -11,7 +12,11 @@ class AddController extends BaseAdmin{
             $this->clearPostFields($_POST);
 
             if(array_key_exists('menu_pos', $_POST)){
-                $this->object_model->updateMenuPosition($_POST['table'], 'menu_pos', false, $_POST['menu_pos']);
+                if($_POST['table'] == 'pages'){
+                    $this->object_model->updateMenuPosition($_POST['table'], 'menu_pos', false, $_POST['menu_pos'], ['where' => 'parent_id']);
+                }else{
+                    $this->object_model->updateMenuPosition($_POST['table'], 'menu_pos', false, $_POST['menu_pos']);
+                }
             }
 
             $this->editData();
@@ -21,14 +26,31 @@ class AddController extends BaseAdmin{
         $res = $this->object_model->showColumns($this->table);
 
         if($res){
-             $res_arr = $this->createOutputData($res);
+             $this->resArr = $this->createOutputData($res);
         }
 
-        if($res_arr['menu_pos']){
+        if($this->resArr['parent_id']){
+
+            if($this->resArr['menu_pos']){
+                $this->menu_pos = $this->object_model->get($this->table, [
+                    'fields' => ['COUNT(*) AS count'],
+                    'where' => ['parent_id' => $this->data['parent_id']]
+                ])[0]['count'] + 1;
+            }
+
+            $this->parents = $this->object_model->get($this->table, [
+                'fields' => [$this->resArr['id_row'], $this->resArr['name_row']],
+                'where' => ['parent_id' => 0]
+            ]);
+
+        }elseif($this->resArr['menu_pos']){
+
             $this->menu_pos = $this->object_model->get($this->table,
                 ['fields' => ['COUNT(*) AS count']
                 ])[0]['count'] + 1;
+
         }
+
         return;
     }
 
@@ -40,7 +62,9 @@ class AddController extends BaseAdmin{
                                                 'columns' => $this->columns,
                                                 'templateArr' => $this->templateArr,
                                                 'translate' => $this->translate,
-                                                'menu_pos' => $this->menu_pos
+                                                'menu_pos' => $this->menu_pos,
+                                                'parents' => $this->parents,
+                                                'res_arr' => $this->resArr
                                                 ));
 
         $this->page = parent::outputData();
