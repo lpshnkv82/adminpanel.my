@@ -36,7 +36,7 @@ class Settings
         'text' => ['name', 'price', 'type', 'sidebar_header', 'phone', 'email', 'adress'],
         'textarea' => ['keywords', 'description', 'content', 'short_content', 'success_phrase'],
         'radio' => ['visible'],
-        'img' => ['img'],
+        'img' => ['img', 'next_img'],
         'gallery_img' => ['gallery_img'],
         'select' => ['menu_pos'],
         'select_parents' => ['parent_id']
@@ -44,7 +44,7 @@ class Settings
 
     private $blockNeedle = [
         'vg-rows' => [],
-        'vg-img' => ['img', 'gallery_img'],
+        'vg-img' => ['img', 'gallery_img', 'next_img'],
         'vg-content' => ['content', 'short_content']
     ];
 

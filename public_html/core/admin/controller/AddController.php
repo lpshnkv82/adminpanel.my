@@ -81,12 +81,12 @@ class AddController extends BaseAdmin{
         $fileEdit = new \libraries\FileEdit();
         $this->fileArray = $fileEdit->addFile();
 
-        /*if($this->fileArray['img'] && $_SESSION['crop_image']){
+        if($this->fileArray['img'] && $_SESSION['crop_image']){
             foreach ($_SESSION['crop_image'] as $item) {
                 $item['img'] = $_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$this->fileArray['img'];
-                $this->fileArray['thumbnails'][] = $fileEdit->createJsThumbnail($item, CROP[$item['ratio']], $item['ratio']);
+                $this->fileArray['thumbnails'][] = $fileEdit->createJsThumbnail($item, 'thumbnails');
             }
-        }*/
+        }
 
         $res = $this->object_model->add($table, [
             'files' => $this->fileArray

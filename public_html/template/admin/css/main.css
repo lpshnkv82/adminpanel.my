@@ -59,14 +59,14 @@ label.vg-element {
     padding: 3.5% 0;
 }
 
-.file_upload mark {
+/*.file_upload mark {
     min-width: max-content;
     background: none;
-}
+}*/
 
 .file_upload input[type=file] {
-    position: absolute;
-    top: 0;
+    /*position: absolute;
+    top: 0;*/
     opacity: 0;
     z-index: -1;
 }
@@ -563,6 +563,11 @@ textarea {
     max-height: 91.5vh;
     max-width: 99.1vw;
     overflow: auto;
+    justify-content: center;
+}
+
+.img_settings a{
+    text-align: center;
 }
 
 .modal_image img {
@@ -575,6 +580,53 @@ textarea {
 
 .offset-top {
     align-items: flex-end;
+}
+
+.thumbnails_wrap{
+    display:none;
+}
+
+.toggle_menu, .toggle_menu:before, .toggle_menu:after {
+    width: 1.5vw;
+    height: 1.1vw;
+    background: linear-gradient(#000, #000) 100% 100% no-repeat;
+    background-size: 1.5vw .15vw;
+    position: relative;
+    cursor: pointer;
+    display:none;
+}
+
+.toggle_menu:before, .toggle_menu:after {
+    background: #000;
+    content: "";
+    height: .15vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.toggle_menu, .toggle_menu:before, .toggle_menu:after {
+    display: block;
+}
+
+.toggle_menu::after,.toggle_menu::before {
+    top: .3vw;
+}
+
+.toggle_menu::after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.toggle_menu::before {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.toggle_menu {
+    background-size: 0 .15vw;
+    left: -1.5vw;
+    width: 10vw;
 }
 
 .select_wrap:after {
@@ -645,4 +697,8 @@ input[type="checkbox"] {
 .custom_check:before,
 .custom_check:after {
     background-color: #2f3b4c !important;
+}
+
+.sort_panel{
+    display:none;
 }

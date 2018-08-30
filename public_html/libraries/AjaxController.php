@@ -26,6 +26,11 @@ class AjaxController extends BaseController{
                 exit(json_encode($this->sortGalleryImg()));
                 break;
 
+            case 'sort_table':
+                $this->ajaxData = json_decode($_POST['data'], true);
+                exit(json_encode($this->sortTable()));
+                break;
+
             case 'search':
                 exit(json_encode($this->ajaxSearch()));
                 break;
@@ -43,7 +48,68 @@ class AjaxController extends BaseController{
                 $this->ajaxData = json_decode($_POST['data'], true);
                 exit($this->createJsThumbnail());
                 break;
+
+            case 'upload_image':
+                exit($this->uploadImage());
+                break;
         }
+    }
+
+    protected function sortTable(){
+
+        $columns = $this->admin_model->showColumns($this->ajaxData['table']);
+
+        foreach($columns as $column){
+            if($column['Field'] == $this->ajaxData['current']){
+                $type = $column['Type'];
+                break;
+            }
+        }
+
+        if($this->ajaxData['first']){
+            $query = "ALTER TABLE {$this->ajaxData['table']} MODIFY COLUMN {$this->ajaxData['current']} $type FIRST";
+        }else{
+            $query = "ALTER TABLE {$this->ajaxData['table']} MODIFY COLUMN {$this->ajaxData['current']} $type AFTER {$this->ajaxData['after']}";
+        }
+
+        return $this->admin_model->customQuery($query);
+    }
+
+    protected function uploadImage(){
+        $fileEdit = new FileEdit();
+        $file = $fileEdit->addFile();
+        $res = $this->admin_model->edit($_POST['table'], [
+            'fields' => $file,
+            'where' => [$_POST['id_row'] => $_POST['id']]
+        ]);
+
+        if($res){
+            $thumbs = $this->admin_model->get($_POST['table'], [
+                'fields' => ['thumbnails'],
+                'where' => [$_POST['id_row'] => $_POST['id']]
+            ])[0]['thumbnails'];
+
+            if($thumbs){
+                $thumbs = explode("|", $thumbs);
+
+                foreach($thumbs as $index => $thumb){
+                    if(strpos($thumb,$_POST['img_row'].'thumbnails_') === 0){
+                        unset($thumbs[$index]);
+                        @unlink($_SERVER['DOCUMENT_ROOT'].PATH.UPLOAD_DIR.$thumb);
+                        break;
+                    }
+                }
+
+                $new_thumb['thumbnails'] = implode("|", $thumbs);
+
+                $this->admin_model->edit($_POST['table'], [
+                    'fields' => $new_thumb,
+                    'where' => [$_POST['id_row'] => $_POST['id']]
+                ]);
+            }
+        }
+        $_SESSION['ajax_image'] = $_POST['img_row'];
+        return PATH.UPLOAD_DIR.reset($file);
     }
 
     protected function changeParent(){
@@ -84,21 +150,42 @@ class AjaxController extends BaseController{
     }
 
     protected function createJsThumbnail(){
+        $this->ajaxData['id'] = $this->clearInt($this->ajaxData['id']);
 
-        if($this->ajaxData['id'] || $this->ajaxData['tbl'] == 'settings'){
+        if($this->ajaxData['id']){
             $fileEdit = new FileEdit();
             $this->ajaxData['img'] = $_SERVER['DOCUMENT_ROOT'].$this->ajaxData['img'];
-            $file = $fileEdit->createJsThumbnail($this->ajaxData, CROP[$this->ajaxData['ratio']], $this->ajaxData['ratio']);
+            $file = $fileEdit->createJsThumbnail($this->ajaxData, $this->ajaxData['thumb_name']);
             if($file && $this->ajaxData['tbl']){
 
                 /*Метод для одиночного изображения*/
                 $new_gal = array();
-                if($this->ajaxData['id']){
-                    $new_gal['id'] = $this->ajaxData['id'];
+                if($this->ajaxData['id'] && $this->ajaxData['id_row']){
+                    $new_gal[$this->ajaxData['id_row']] = $this->ajaxData['id'];
                 }else{
                     $all_rows = true;
                 }
-                $new_gal['thumbnails'] = $file;
+                $thumbs = $this->admin_model->get($this->ajaxData['tbl'], [
+                    'fields' => ['thumbnails'],
+                    'where' => [$this->ajaxData['id_row'] => $this->ajaxData['id']]
+                ])[0]['thumbnails'];
+
+                if($thumbs){
+                    $thumbs = explode("|", $thumbs);
+                    $write_flag = false;
+                    foreach($thumbs as $index => $thumb){
+                        if(strpos($thumb,$this->ajaxData['thumb_name'].'_') === 0){
+                            $thumbs[$index] = $file;
+                            $write_flag = true;
+                            break;
+                        }
+                    }
+                    if(!$write_flag) $thumbs[] = $file;
+                }else{
+                    $thumbs[] = $file;
+                }
+
+                $new_gal['thumbnails'] = implode("|", $thumbs);
                 $this->admin_model->edit($this->ajaxData['tbl'], ['fields' => $new_gal, 'all_rows' => $all_rows]);
                 /*Метод для одиночного изображения*/
 
@@ -125,7 +212,8 @@ class AjaxController extends BaseController{
                 return false;
         }else{
             unset($this->ajaxData['img']);
-            $_SESSION['crop_image'][$this->ajaxData['ratio']] = $this->ajaxData;
+            $_SESSION['crop_image'][] = $this->ajaxData;
+            return 'add_session';
         }
     }
 
@@ -159,17 +247,17 @@ class AjaxController extends BaseController{
     protected function deleteGalleryImg(){
         $id = $this->ajaxData['id'];
         $id_row = $this->ajaxData['id_row'];
-        $img = $this->ajaxData['img_src'];
+        if(strrpos($this->ajaxData['img_src'], "?") !== false){
+            $img = substr($this->ajaxData['img_src'], 0, strrpos($this->ajaxData['img_src'], "?"));
+        }else{
+            $img = $this->ajaxData['img_src'];
+        }
         $table = $this->ajaxData['table'];
 
-        switch($this->ajaxData['row']){
-            case 'img':
-                $row = 'thumbnails';
-                break;
-
-            default:
-                $row = $this->ajaxData['row'];
-                break;
+        if(strpos($this->ajaxData['row'], 'gallery') === false){
+            $row = 'thumbnails';
+        }else{
+            $row = $this->ajaxData['row'];
         }
 
         if($id && $id_row){

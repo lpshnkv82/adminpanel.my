@@ -248,7 +248,7 @@ class FileEdit{
         return $image_name;
     }
 
-    public function createJsThumbnail($arr, $new_image_size, $prefix = ''){
+    public function createJsThumbnail($arr, $prefix = ''){
 
         $image = $arr['img'];
 

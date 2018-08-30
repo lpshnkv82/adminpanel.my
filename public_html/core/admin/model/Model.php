@@ -171,4 +171,8 @@ class Model extends \core\base\model\BaseModel{
         }
         return;
     }
+
+    public function customQuery($query){
+        return $this->inst_driver->update($query);
+    }
 }

@@ -35,7 +35,10 @@
         if($class != 'vg-content') {
             echo '</div>';
         }
+        $classes .= '.' . $class . ' > div,';
     }
+    $classes = rtrim($classes);
+    echo '<div class="sort_panel">' . $classes . '</div>';
     ?>
 
     <div class="vg-wrap vg-element vg-full">

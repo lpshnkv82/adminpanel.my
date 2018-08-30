@@ -114,6 +114,11 @@ class EditController extends BaseAdmin{
             unset($_POST['table']);
             unset($_POST[$this->id_row]);
 
+            if($_SESSION['ajax_image']){
+                unset($_FILES[$_SESSION['ajax_image']]);
+                unset($_SESSION['ajax_image']);
+            }
+
             $fileEdit = new \libraries\FileEdit();
             $this->fileArray = $fileEdit->addFile();
 
