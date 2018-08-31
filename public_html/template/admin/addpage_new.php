@@ -37,7 +37,7 @@
         }
         $classes .= '.' . $class . ' > div,';
     }
-    $classes = rtrim($classes);
+    $classes = rtrim($classes, ',');
     echo '<div class="sort_panel">' . $classes . '</div>';
     ?>
 
