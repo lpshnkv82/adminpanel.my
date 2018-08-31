@@ -349,7 +349,6 @@ label.vg-element {
     background: #2f3b4c;
     width: 25vw;
     padding: 1vw 0;
-    border-right: 1px solid rgba(24, 30, 38, 0.1);
     border-bottom: 1px solid #2d3848;
 }
 
@@ -395,6 +394,7 @@ label.vg-element {
 
 .active {
     border-left: 2px solid #00bfe8;
+    box-sizing: border-box;
 }
 
 
