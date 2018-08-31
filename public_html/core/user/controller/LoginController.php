@@ -2,12 +2,12 @@
 namespace core\user\controller;
 use core\base\controller\AuthException;
 
-class LoginController extends BaseUser{
+class LoginController extends \core\base\controller\BaseController {
 
     protected $object_model_user;
 
     protected function inputData($parameters = array()){
-       parent::inputData();
+       //parent::inputData();
         $this->display_flag = true;
         $this->object_model_user = \core\base\model\ModelUser::getInstance();
 
@@ -27,8 +27,9 @@ class LoginController extends BaseUser{
 
         $ip_user = $_SERVER['REMOTE_ADDR'];
         $time_clean = new \DateTime();
+
         $time_clean->modify("-".BLOCK_TIME." hour");
-        $this->object_model_user->deleteFealtures($time_clean->format("H:i:s"));
+        $this->object_model_user->deleteFealtures($time_clean->format("Y-m-d H:i:s"));
 
         $fealtures = $this->object_model_user->getFealturies($ip_user);
 
@@ -39,6 +40,7 @@ class LoginController extends BaseUser{
 
                 try{
                     $user_data = $this->object_model_user->getUser($login, $password);
+                    if(!$user_data) $this->redirect();
                     $id = $user_data['user_id'];
                     $this->user_type = $user_data['user_type'];
                     $this->user_name = $user_data['login'];
@@ -54,9 +56,9 @@ class LoginController extends BaseUser{
                     $user_log = $this->errors.' пользователь - '.$_POST['login'].' с адреса - '.$ip_user;
                     $this->writeError($user_log, 'log_user.txt', 'AccessDenied');
                     if($fealtures == NULL){
-                        $this->object_model_user->insertFealtures($ip_user);
+                        $this->object_model_user->insertFealtures($login, $ip_user);
                     }elseif($fealtures > 0){
-                        $this->object_model_user->updateFealtures($ip_user, $fealtures);
+                        $this->object_model_user->updateFealtures($login, $ip_user, $fealtures);
                     }
                 }
             }elseif($fealtures == 3){
@@ -75,10 +77,9 @@ class LoginController extends BaseUser{
 
     protected function outputData(){
 
-        $this->content = $this->render(ADMIN_TEMPLATE.'login_page', array(
+        $this->page = $this->render(ADMIN_TEMPLATE.'login_page', array(
                                                             'error' => $_SESSION['auth']
                                                             ));
-        $this->page = parent::outputData();
         unset($_SESSION['auth']);
 
         return $this->page;
