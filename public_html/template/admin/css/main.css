@@ -59,6 +59,7 @@ label.vg-element {
     padding: 3.5% 0;
 }
 
+
 /*.file_upload mark {
     min-width: max-content;
     background: none;
@@ -566,7 +567,7 @@ textarea {
     justify-content: center;
 }
 
-.img_settings a{
+.img_settings a {
     text-align: center;
 }
 
@@ -582,21 +583,24 @@ textarea {
     align-items: flex-end;
 }
 
-.thumbnails_wrap{
-    display:none;
+.thumbnails_wrap {
+    display: none;
 }
 
-.toggle_menu, .toggle_menu:before, .toggle_menu:after {
+.toggle_menu,
+.toggle_menu:before,
+.toggle_menu:after {
     width: 1.5vw;
     height: 1.1vw;
     background: linear-gradient(#000, #000) 100% 100% no-repeat;
     background-size: 1.5vw .15vw;
     position: relative;
     cursor: pointer;
-    display:none;
+    display: none;
 }
 
-.toggle_menu:before, .toggle_menu:after {
+.toggle_menu:before,
+.toggle_menu:after {
     background: #000;
     content: "";
     height: .15vw;
@@ -605,11 +609,14 @@ textarea {
     left: 0;
 }
 
-.toggle_menu, .toggle_menu:before, .toggle_menu:after {
+.toggle_menu,
+.toggle_menu:before,
+.toggle_menu:after {
     display: block;
 }
 
-.toggle_menu::after,.toggle_menu::before {
+.toggle_menu::after,
+.toggle_menu::before {
     top: .3vw;
 }
 
@@ -699,6 +706,17 @@ input[type="checkbox"] {
     background-color: #2f3b4c !important;
 }
 
-.sort_panel{
-    display:none;
+.sort_panel {
+    display: none;
+}
+
+.sitemap-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+}
+
+.sitemap-button:hover {
+    background: #eceef2
 }

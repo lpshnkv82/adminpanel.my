@@ -38,6 +38,13 @@
                     </form>
                 </div>
             </div>
+            <!--кнопка-->
+            <a href="#"  class="vg-element vg-box-shadow sitemap-button">
+                <span class="vg-text vg-firm-color1">
+                    Создать карту сайта
+                </span>
+            </a>
+            <!--/кнопка-->
             <div class="vg-element vg-fifth">
                 <div class="vg-element vg-half vg-right">
                     <div class="vg-element vg-text vg-center">
