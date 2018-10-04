@@ -68,6 +68,7 @@ label.vg-element
         z-index: -1
 
 .vg-button
+    align-items: center
     width: max-content
     flex-basis: auto
     padding: $offset*10
@@ -304,9 +305,16 @@ textarea
     margin: $offset
     height: 5vw
     width: 5vw
+    &--small
+        max-height: 25px
+        max-width: 25px
+        min-height: 25px
+        min-width: 25px
+        background: rgb(11,11,11)
     @media (max-width: 768px)
         height: 10vw
         width: 10vw
+    
 
 .vg-rows, .vg-img
     flex-basis: $half-size
@@ -470,3 +478,27 @@ input[type="checkbox"]
 
 .custom_check:before, .custom_check:after
 	background-color: $color1 !important
+
+.modal
+    position: fixed
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    width: 500px
+    height: 500px
+    z-index: 100
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    margin: auto
+    @media(max-width: 600px)
+        width: 300px
+        height: 300px
+.palette
+    width: 490px
+    height: 460px
+    @media(max-width: 600px)
+        width: 290px
+        height: 270px
+

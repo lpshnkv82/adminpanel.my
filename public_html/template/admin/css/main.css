@@ -59,20 +59,20 @@ label.vg-element {
     padding: 3.5% 0;
 }
 
-
-/*.file_upload mark {
+.file_upload mark {
     min-width: max-content;
     background: none;
-}*/
+}
 
 .file_upload input[type=file] {
-    /*position: absolute;
-    top: 0;*/
+    position: absolute;
+    top: 0;
     opacity: 0;
     z-index: -1;
 }
 
 .vg-button {
+    align-items: center;
     width: max-content;
     flex-basis: auto;
     padding: 7%;
@@ -350,6 +350,7 @@ label.vg-element {
     background: #2f3b4c;
     width: 25vw;
     padding: 1vw 0;
+    border-right: 1px solid rgba(24, 30, 38, 0.1);
     border-bottom: 1px solid #2d3848;
 }
 
@@ -395,7 +396,6 @@ label.vg-element {
 
 .active {
     border-left: 2px solid #00bfe8;
-    box-sizing: border-box;
 }
 
 
@@ -420,6 +420,14 @@ textarea {
     margin: 0.7%;
     height: 5vw;
     width: 5vw;
+}
+
+.vg-dotted-square--small {
+    max-height: 25px;
+    max-width: 25px;
+    min-height: 25px;
+    min-width: 25px;
+    background: #0b0b0b;
 }
 
 @media (max-width: 768px) {
@@ -564,11 +572,6 @@ textarea {
     max-height: 91.5vh;
     max-width: 99.1vw;
     overflow: auto;
-    justify-content: center;
-}
-
-.img_settings a {
-    text-align: center;
 }
 
 .modal_image img {
@@ -581,59 +584,6 @@ textarea {
 
 .offset-top {
     align-items: flex-end;
-}
-
-.thumbnails_wrap {
-    display: none;
-}
-
-.toggle_menu,
-.toggle_menu:before,
-.toggle_menu:after {
-    width: 1.5vw;
-    height: 1.1vw;
-    background: linear-gradient(#000, #000) 100% 100% no-repeat;
-    background-size: 1.5vw .15vw;
-    position: relative;
-    cursor: pointer;
-    display: none;
-}
-
-.toggle_menu:before,
-.toggle_menu:after {
-    background: #000;
-    content: "";
-    height: .15vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.toggle_menu,
-.toggle_menu:before,
-.toggle_menu:after {
-    display: block;
-}
-
-.toggle_menu::after,
-.toggle_menu::before {
-    top: .3vw;
-}
-
-.toggle_menu::after {
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-
-.toggle_menu::before {
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.toggle_menu {
-    background-size: 0 .15vw;
-    left: -1.5vw;
-    width: 10vw;
 }
 
 .select_wrap:after {
@@ -706,17 +656,36 @@ input[type="checkbox"] {
     background-color: #2f3b4c !important;
 }
 
-.sort_panel {
-    display: none;
-}
-
-.sitemap-button {
+.modal {
+    position: fixed;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    width: max-content;
+    width: 500px;
+    height: 500px;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
 }
 
-.sitemap-button:hover {
-    background: #eceef2
+@media (max-width: 600px) {
+    .modal {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.palette {
+    width: 490px;
+    height: 460px;
+}
+
+@media (max-width: 600px) {
+    .palette {
+        width: 290px;
+        height: 270px;
+    }
 }
